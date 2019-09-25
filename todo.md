@@ -2,6 +2,7 @@
   - subject I
     - chapter 1
       - text
+      - images
       - code
         - language A
           - files
@@ -9,6 +10,7 @@
           - files
     - chapter 2
       - text
+      - images
       - code
         - language A
           - files
@@ -17,6 +19,7 @@
   - subject II
     - chapter 1
       - text
+      - images
       - code
         - language A
           - files
@@ -24,6 +27,7 @@
           - files
     - chapter 2
       - text
+      - images
       - code
         - language A
           - files
