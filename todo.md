@@ -46,4 +46,9 @@
   - code translations
   - editing
 - licensing
-
+- build
+  - create books
+    - html
+    - epub
+    - mobi
+    - pdf
