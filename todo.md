@@ -1,0 +1,45 @@
+- figure out project structure.
+  - subject I
+    - chapter 1
+      - text
+      - code
+        - language A
+          - files
+        - language B
+          - files
+    - chapter 2
+      - text
+      - code
+        - language A
+          - files
+        - language B
+          - files
+  - subject II
+    - chapter 1
+      - text
+      - code
+        - language A
+          - files
+        - language B
+          - files
+    - chapter 2
+      - text
+      - code
+        - language A
+          - files
+        - language B
+          - files
+- create project and topic list.
+  - trigonometry
+  - curves
+  - fractals
+  - animation
+  - physics
+  - colors
+  - random
+- contribution ideas
+  - donations
+  - code translations
+  - editing
+- licensing
+
