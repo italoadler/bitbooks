@@ -1,37 +1,41 @@
 - figure out project structure.
   - subject I
     - chapter 1
-      - text
-      - images
-      - code
-        - language A
+      - text.md
+      - images/
+        - img.png
+      - code/
+        - language A/
           - files
-        - language B
+        - language B/
           - files
     - chapter 2
-      - text
-      - images
-      - code
-        - language A
+      - text.md
+      - images/
+        - img.png
+      - code/
+        - language A/
           - files
-        - language B
+        - language B/
           - files
   - subject II
     - chapter 1
-      - text
-      - images
-      - code
-        - language A
+      - text.md
+      - images/
+        - img.png
+      - code/
+        - language A/
           - files
-        - language B
+        - language B/
           - files
     - chapter 2
-      - text
-      - images
-      - code
-        - language A
+      - text.md
+      - images/
+        - img.png
+      - code/
+        - language A/
           - files
-        - language B
+        - language B/
           - files
 - create project and topic list.
   - trigonometry
