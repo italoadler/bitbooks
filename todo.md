@@ -41,6 +41,12 @@
   - physics
   - colors
   - random
+- supported languages (brainstorm)
+  - html/js/canvas
+  - html/ts/canvas
+  - golang with cairo
+  - processing / p5js
+  - python (cairo or other)
 - contribution ideas
   - donations
   - code translations
