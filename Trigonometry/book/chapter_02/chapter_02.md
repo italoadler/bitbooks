@@ -6,29 +6,29 @@ In this chapter, we'll cover a relationship known as the Pythagorean Theorem. Th
 
 The Pythagorean Theorem states that the sum of the squares of the two legs of a right triangle is equal to the square of the hypotenuse. That's mouthful, so you often hear it in its much-abbreviated form, "a squared plus b squared = c squared" or "a^2 + b^2 = c^2". And this is true as long as you name the legs `a` and `b` and the hypotenuse `c`. See figure 2-1.
 
-![Side a squared, plus side b squared equals side c squared.](images/ch02/figure_2-1.png)
+![Side a squared, plus side b squared equals side c squared.](images/figure_2-1.png)
 *Figure 2-1. Side a squared, plus side b squared equals side c squared.*
 
 So, if you measure side `a`, square it, measure side `b` and square it, then add those two results together, you'll get the square of the length of side `c`. You'll very often seen this represented with actual squares hanging off each side of the triangle, much like figure 2-2.
 
-![The compbined area of the two smaller squares equals the area of the larger one.](images/ch02/figure_2-2.png)
+![The compbined area of the two smaller squares equals the area of the larger one.](images/figure_2-2.png)
 *Figure 2-2. The combined area of the two smaller squares equals the area of the larger one.*
 
 Now, the area of square A plus the area of square B is equal to the area of square C. There are numerous proofs of this theorem. Some are quite ingenious and visually pleasing. If you search Youtube, you'll probably come up with a few really nice ones. For the purposes of this book, I'm not going to go into trying to prove the theorem though. I'll dive straight into how to use it.
 
 One of the core uses of the Pythagorean Theorem is measuring the distance between any two arbitrary points on a two-dimensional plane. See figure 2-3.
 
-![The line represents the distance between the two points.](images/ch02/figure_2-3.png)
+![The line represents the distance between the two points.](images/figure_2-3.png)
 *Figure 2-3. The line represents the distance between the two points.*
 
 It might not be immediately obvious how the theorem would help in this case. There's no triangle here, much less a right triangle. There are only two points, which can only create a line, not a triangle. Let me show you the trickery. First, in figure 2-4, I'll extend a line down along the y-axis from point A, and a line across on the x-axis from point B.
 
-![Extend lines from each point.](images/ch02/figure_2-4.png)
+![Extend lines from each point.](images/figure_2-4.png)
 *Figure 2-4. Extend lines from each point.*
 
 Magically, a triangle appears! Not just any triangle, either. It's a right triangle! And if you calculate the distance between the two points on the x-axis, by subtracting one from the other, you get the length of that side. Do the same on the y-axis and you have the length of that side. Square each one, add the results and take the square root of that, and you have the distance between the two points. See figure 2-5.
 
-![Calculate the length of the two legs by subtracting.](images/ch02/figure_2-5.png)
+![Calculate the length of the two legs by subtracting.](images/figure_2-5.png)
 *Figure 2-5. Calculate the length of the two legs by subtracting.*
 
 By now, I bet you're ready to write some code. Let's do it. Start with the basic project template described in the introduction. This sets up a canvas that fills the browser window, and gets its 2d drawing context.
@@ -107,7 +107,7 @@ Again, begin a path. Then move to the first point, draw a line to the second poi
 
 Now when you run this and click around, you'll get one point, then two points with a right triangle drawn to fit those two points. Click again to clear. You'll notice that depending on where you click, you might get the triangle being drawn so that its right angle is in an upper corner or a lower corner. You can see some examples in figure 2-6.
 
-![Drawing some triangles with code.](images/ch02/figure_2-6.png)
+![Drawing some triangles with code.](images/figure_2-6.png)
 *Figure 2-6. Drawing some triangles with code.*
 
 This is no problem. It all depends on that intersecting point. You could change it so it is created with the `x` of point 0 and the `y` of point 1, which would reverse the way it is drawn. Or you could do some conditional logic to find out which point was lower on the y-axis and use its `y` and the other 
@@ -135,7 +135,7 @@ Finally, let's display the values right on the canvas, as seen in listing 2-6.
 
 This uses the `fillText` method to draw the value of `a`, `b`, and `c` to the canvas, calculating the position to be roughly at the center point of each line, with a bit of an offset so it's not sitting right on the line. The result is in figure 2-7.
 
-![Labeling the distances.](images/ch02/figure_2-7.png)
+![Labeling the distances.](images/figure_2-7.png)
 *Figure 2-7. Labeling the distances.*
 
 Listing 2-7 shows the full final code for this example:
@@ -292,7 +292,7 @@ Then, when it goes to calculate the distance, it can just get one point and call
 
 I left off drawing the other lines and labeling their lengths, focusing just on the distance. You can see the result in figure 2.8.
 
-![The distance between two points.](images/ch02/figure_2-8.png)
+![The distance between two points.](images/figure_2-8.png)
 *Figure 2-8. The distance between two points.*
 
 ## Circle Collisions
@@ -424,7 +424,7 @@ Instead of just `radius`, I've defined `r0` and `r` for the two circles. Then in
 
 Now as you move the mouse around, a 60-pixel radius circle is drawn around the cursor. When that circle touches the center circle, they both turn red. Try changing the two radius values. Things should continue to work perfectly. In fact, if you set `r` to zero, you'll wind up with the same setup you had in the earlier example. Figure 2.9 shows the result of this example.
 
-![Circle-circle collision detection.](images/ch02/figure_2-9.png)
+![Circle-circle collision detection.](images/figure_2-9.png)
 *Figure 2-9. Circle-circle collision detection.*
 
 Everything in this section comes under the heading of "collision detection". This is useful in user interfaces to tell when a user has clicked on a certain area of the screen. It's also useful in games. If a game object is a circle, or can be approximated by a circle, you can use these techniques to detect game collisions. Examples would be a bullet hitting a spaceship (circle-point collision) or two spaceships hitting each other (circle-circle collision). Obviously, there are many other types of collision detection for other shapes, but this is the one that most applies to the subject matter of this book.

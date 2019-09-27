@@ -4,27 +4,27 @@ Let's start by finding our way around a triangle. First I'll go over all the par
 
 It's obvious by the name alone that a triangle has three angles. You might hear these called "points" or "corners" or some other term. I'll stick to calling them angles. A triangle also has three "sides" or "edges" or "lines" that connect the three angles. I'll call these the sides of the triangle. So there are three angles and three sides. Always and forever. See Figure 1-1.
 
-![Angles and sides](images/ch01/figure_1-1.png)
+![Angles and sides](images/figure_1-1.png)
 *Figure 1-1. Angles and sides.*
 
 When you go to label these parts, you can do so with single letters. A common convention is to label the three angles with the upper case lettes `A`, `B` and `C`. And the three sides with lower case letters `a`, `b` and `c` as you can see in figure 1-2.
 
-![Labeling angles and sides.](images/ch01/figure_1-2.png)
+![Labeling angles and sides.](images/figure_1-2.png)
 *Figure 1-2. Labeling angles and sides.*
 
 Angles are also sometimes indicated by drawing a small arc inside the angle as seen in figure 1-3.
 
-![Arcs indicate angles.](images/ch01/figure_1-3.png)
+![Arcs indicate angles.](images/figure_1-3.png)
 *Figure 1-3. Arcs indicate angles.*
 
 Note that each angle is connected to exactly two sides. In fact, it's the intersection of those two sides that creates that angle. The term for this is the "adjacent" sides. Here, angle `A` is created by the intersection of sides `b` and `c`. So angle `A`'s adjacent sides are `b` and `c`. Or to put it another way, sides `b` and `c` are adjacent to angle `A`. See figure 1-4. If this is new to you, take a few seconds and figure out the adjacent sides for angles `B` and `C`.
 
-![Adjacent sides.](images/ch01/figure_1-4.png)
+![Adjacent sides.](images/figure_1-4.png)
 *Figure 1-4. Adjacent sides.*
 
 Also note that side `a` is not connected to angle `A` at all. It's all the way across on the other end of the triangle, directly opposite angle `A`. So we say that side `a` is opposite angle `A`. Or angle `A`'s opposite side is `a`. So any single angle of a triangle has exactly two adjacent sides and one opposite side. Check out figure 1-5.
 
-![Opposite side.](images/ch01/figure_1-5.png)
+![Opposite side.](images/figure_1-5.png)
 *Figure 1-5. Opposite side.*
 
 I've arranged this so the opposite sides have the same letter as the angle they are opposite to. Side `a` and angle `A`, side `b` and angle `B`, side `c` and angle `C`. This is not required, but it's another established convention that I'll stick to.
@@ -43,32 +43,32 @@ But this 360 degree standard is arbitrary. It most likely comes from a rounding 
 
 Generally, when you measure the angles around from 0 to 360, you start pointing due right as zero degrees. As you increase the angle, you go counter-clockwise, through 90, 180, 270 and back to 360 degrees, which is the same as 0. You can see this in figure 1-6.
 
-![Angles going around counter-clockwise.](images/ch01/figure_1-6.png)
+![Angles going around counter-clockwise.](images/figure_1-6.png)
 *Figure 1-6. Angles going around counter-clockwise.*
 
 You can also go the other way - clockwise - using negative angles. So -90 degrees is the same as 270 degrees. -180 is the same as 180, and -270 is the same as 90. And of course, -360 degrees is the same as 360 or 0. See figure 1-7.
 
-![Negative angles going around clockwise.](images/ch01/figure_1-7.png)
+![Negative angles going around clockwise.](images/figure_1-7.png)
 *Figure 1-7. Negative angles going around clockwise.*
 
 Now while this counter-clockwise rotation is somewhat of a standard, it is based on a system know as the Cartesian coordinate system. You can see the Cartesian system in figure 1-8. In this system (for two dimensions) you have two axes, which are usually referred to as `x` and `y`. The x-axis increases positively as it goes to the right and negatively as it goes to the left. And the y-axis increases positively as it goes up and negatively as it goes down. Where both axes are zero, this is called the origin.
 
-![Cartesian coordinates.](images/ch01/figure_1-8.png)
+![Cartesian coordinates.](images/figure_1-8.png)
 *Figure 1-8. Cartesian coordinates.
 
 However, in many screen-based graphics systems, the y-axis is reversed. The origin usually defaults to the top left corner of the screen. The x-axis is the same, but the y-axis increases as it goes down towards the bottom of the screen. Screen coordinates are demonstrated in figure 1-9.
 
-![Screen coordinates.](images/ch01/figure_1-9.png)
+![Screen coordinates.](images/figure_1-9.png)
 *Figure 1-9. Screen coordinates.
 
 You can usually move the origin to any other location, which gives you access to the negative regions of the x- and y-axes. In figure 1-10, you can clearly see that this is the Cartesian coordinate system flipped upside down.
 
-![Screen coordinates, translated.](images/ch01/figure_1-10.png)
+![Screen coordinates, translated.](images/figure_1-10.png)
 *Figure 1-10. Screen coordinates, translated.
 
 Because of this, the direction of angles is also flipped in these systems, with angles increasing as they go around counter-clockwise. See figure 1-11.
 
-![Angles in screen coordinates.](images/ch01/figure_1-11.png)
+![Angles in screen coordinates.](images/figure_1-11.png)
 *Figure 1-11. Angles in screen coordinates.*
 
 Later, when I introduce some actual code, I'll show you how you can flip the screen coordinate system to make it act just like a standard Cartesian system.
@@ -79,14 +79,14 @@ When you start coding anything to do with angles, you'll find that the math libr
 
 To understand radians, let's go back to our circle. The distance from the center of the circle to any point on the perimeter of the circle is the circle's radius. For any angle, you can measure the length of the arc created by that angle. When that arc length is the same as the length of the radius, then we have an angle of one radian. That works out to just about 57.2958 degrees. You can see a radian in figure 1-12. It seems like a strange and rather arbitrary way to divide up a circle, but remember, so is 360.
 
-![One radian is the angle where the arc length equals the radius.](images/ch01/figure_1-12.png)
+![One radian is the angle where the arc length equals the radius.](images/figure_1-12.png)
 *Figure 1-12. One radian is the angle where the arc length equals the radius.*
 
 And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter ***PI***. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
 
 Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 1-13.
 
-![A circle is 2PI radians.](images/ch01/figure_1-13.png) 
+![A circle is 2PI radians.](images/figure_1-13.png) 
 *Figure 1-13. A circle is 2PI radians.*
 
 Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just over 6.28.
@@ -121,17 +121,17 @@ Another useful thing to know is that the measurement of a given angle is proport
 
 In figure 1-14, let's assume that the lengths of sides `b` and `c` will not change. If you make angle `A` smaller, side `a` will be proportionately smaller. And as you increase the angle, the length of side `a` grows proportionately.
 
-![As angle A increases, the length of side a increases.](images/ch01/figure_1-14.png) 
+![As angle A increases, the length of side a increases.](images/figure_1-14.png) 
 *Figure 1-14. As angle A increases, the length of side a increases.*
 
 Now if you make angle `A` very close to 180 degrees, as I did in figure 1-15, then the other two angles must become very close to 0 degrees.
 
-![Angle A is very close to 180 degrees.](images/ch01/figure_1-15.png) 
+![Angle A is very close to 180 degrees.](images/figure_1-15.png) 
 *Figure 1-15. Angle A is very close to 180 degrees.*
 
 Let's go all the way and make angle `A` exactly 180 degrees. See figure 1-16.
 
-![Angle A is exactly 180 degrees.](images/ch01/figure_1-16.png) 
+![Angle A is exactly 180 degrees.](images/figure_1-16.png) 
 *Figure 1-16. Angle A is exactly 180 degrees.*
 
 This means the other two angles must be exactly 0 degrees. This no longer looks like a triangle at all, but mathematically, there's no problem. It still follows all the rules. Also notice that the length of side `a` is now exactly the same as the sum of sides `b` and `c`.
@@ -148,14 +148,14 @@ I've covered most of what you need to know about triangles in general at this po
 
 The first special triangle is the equalateral triangle. See figure 1-17. In this case, all the angles have the same measurement, and all the sides have the same length. Because the sum of the angles must add up to 180 degrees, each angle must be 180/3 or 60 degrees. And so it is. It does not matter what lengths the sides are, but whatever they are, they are all equal to each other.
 
-![Equalateral triangle](images/ch01/figure_1-17.png) 
+![Equalateral triangle](images/figure_1-17.png) 
 *Figure 1-17. Equalateral triangle.*
 
 ### Isosceles Triangles
 
 The next special triangle is the Isosceles triangle. See figure 1-18. In this case, two of the angles have the same measurement. Hence, two of the sides have the same length.
 
-![Isosceles triangle](images/ch01/figure_1-18.png) 
+![Isosceles triangle](images/figure_1-18.png) 
 *Figure 1-18. Isosceles triangle.*
 
 It's common to indicate equality by drawing one or more slashes through sides or the arcs in angles. Here, the single slash through sides `b` and `c` indicate that they are equal. And the double slash through the arcs of the two angles indicate that they have equal measurements. 
@@ -164,7 +164,7 @@ It's common to indicate equality by drawing one or more slashes through sides or
 
 Then we come to acute and obtuse triangles, as seen in figure 1-19. In terms of angles, obtuse means greater than 90 degrees, and acute means less than 90 degrees. An obtuse triangle is one in which one of the angles is more than 90 degrees. An acute triangle is where all three angles are less than 90 degrees.
 
-![Acute and obtuse triangles](images/ch01/figure_1-19.png)
+![Acute and obtuse triangles](images/figure_1-19.png)
 *Figure 1-19. Acute and obtuse triangles.*
 
 You might be wondering why I said just one angle in an obtuse triangle is greater than 90. Remember that the sum of the angles must add up to 180 degrees. If you had, say two angles that measured 91 degrees, the sum would already be 182 without even considering the third angle. So this is impossible. If you still have doubts, try to draw a triangle with two angles greater than 90 degrees.
@@ -173,7 +173,7 @@ You might be wondering why I said just one angle in an obtuse triangle is greate
 
 And finally we come down to what will be the most important type of triangle in this book, the right triangle. See figure 1-20. A right triangle is where one of the angles is exactly 90 degrees. A right angle is an angle that measures exactly 90 degrees. We symbolize the right angle by drawing a small square in that corner, rather than the small arc.
 
-![Right triangle.](images/ch01/figure_1-20.png) 
+![Right triangle.](images/figure_1-20.png) 
 *Figure 1-20. Right triangle.*
 
 In some more casual situations where it is well established that you are working with right triangles and it is obvious which angle is 90 degrees, you might see the little square omitted. But I'll try to be diligent and include them in this book.
@@ -184,7 +184,7 @@ The two sides that are adjacent to the right angle are known as the legs of the 
 
 The side opposite the right angle is known as the hypotenuse. These are all shown in figure 1-21.
 
-![Sides and hypotenuse.](images/ch01/figure_1-21.png) 
+![Sides and hypotenuse.](images/figure_1-21.png) 
 *Figure 1-21. Sides and hypotenuse.*
 
 There's also a slight change in some existing terminology. In most triangles, you can say that any angle has two adjacent sides. But in a right triangle, you normally don't refer to the hypotenuse as an adjacent side. It's just the hypotenuse.
