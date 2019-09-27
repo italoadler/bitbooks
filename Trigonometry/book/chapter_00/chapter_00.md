@@ -12,12 +12,12 @@ But if you're doing any kind of graphics programming, simulations, game developm
 
 Trigonometry is the study of the relationship of the angles and side lengths of triangles. So it may seem strange to think that is is used so often, even if you're not drawing triangles. But it turns out that trigonometry's uses far surpass just measuring triangles. Say you want to make something oscillate back and forth or up and down. A sine wave is a great solution. See figure 0-1.
 
-![A sine wave.](images/ch00/figure_0-1.png)
+![A sine wave.](images/figure_0-1.png)
 *Figure 0-1. A sine wave.*
 
 Want to move something around in a circle or oval? Or arrange objects around in a circle or oval? Trig is vital there. Want to make an object point at or move towards the mouse, or some other point? Trigonometry again. The distance from one point on the screen to another (as seen in figure 0-2)? Trigonometry is involved.
 
-![Using trig to find distance between two points.](images/ch00/figure_0-2.png)
+![Using trig to find distance between two points.](images/figure_0-2.png)
 *Figure 0-2. Using trig to find distance between two points.*
 
 Simulating any kind of physics with acceleration and velocity? You'll need trig. Sound waves are either made directly with sine waves, or can be synthesized by multiple sine waves at different frequencies and strengths.
@@ -60,6 +60,7 @@ Listing 0-1 shows a few of the more common functions of the JavaScript math libr
 
 *Listing 0-1*
 
+<pre>
 JavaScript         C#                  Processing      Python              Go
 -----------------  ------------------  --------------  ------------------  -------------------
 Math.sin(angle)    Math.Sin(angle)     sin(angle)      math.sin(angle)     math.Sin(angle)
@@ -69,6 +70,7 @@ Math.atan(ratio)   Math.Atan(ratio)    atan(angle)     math.atan(ratio)    math.
 Math.atan2(y, x)   Math.Atan2(y, x)    atan2(angle)    math.atan2(y, x)    math.Atan2(angle)
 Math.sqrt(value)   Math.Sqrt(value)    sqrt(value)     math.sqrt(value)    math.Sqrt(angle)
 Math.PI            Math.PI             PI              math.pi             math.Pi
+</pre>
 
 This isn't all of the functions by far, but you can see that for the most part, translating the math functions from JavaScript to some other language is, for the most part, trivial. The functions themselves are mostly standard. To a large degree, it's just a matter of getting the right combination of upper and lower cases. Also, don't worry if you don't know what some (or any) of those things are. They'll all be covered in the book.
 
@@ -122,7 +124,7 @@ It sets the canvas size to the size of the browser content area using `window.in
 
 That itself is all the boilerplate. Below that I included a few lines of sample drawing code. This just executes a `for` loop to draw 100 random lines on the canvas. Figure 0-3 shows the result.
 
-![Random lines.](images/ch00/figure_0-3.png)
+![Random lines.](images/figure_0-3.png)
 *Figure 0-3. Random lines.*
 
 Note that the boilerplate does not include any page loading event listeners or callbacks, classes, or anything else fancy. Also notice that it does not require, include, or import any other external libraries. In more complex example, there will of course be some more complex code, but for the most part I'm going to keep things as bare-bones and simple as humanly possible. This is all in the interest of making the code as understandable and as portable as humanly possible.
