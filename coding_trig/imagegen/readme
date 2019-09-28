@@ -1,0 +1,10 @@
+This is a golang project using Cairo to generate some of the figures for use in the book.
+
+Requirements:
+
+1. Install golang from https://golang.org/
+2. Install direnv from https://direnv.net/
+3. Install `go-cairo` from `https://github.com/bit101/go-cairo` (can use `go get github.com/bit101/go-cairo`)
+4. Install `blgo` from `https://github.com/bit101/blgo` (can use `go get github.com/bit101/blgo`)
+5. Edit `main.go` to uncomment which image(s) you want to generate.
+6. go run main.go
