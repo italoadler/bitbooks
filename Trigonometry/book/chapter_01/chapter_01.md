@@ -27,19 +27,19 @@ Also note that side `a` is not connected to angle `A` at all. It's all the way a
 ![Opposite side.](images/figure_1-5.png)
 *Figure 1-5. Opposite side.*
 
-I've arranged this so the opposite sides have the same letter as the angle they are opposite to. Side `a` and angle `A`, side `b` and angle `B`, side `c` and angle `C`. This is not required, but it's another established convention that I'll stick to.
+I've arranged this so the opposite sides have the same letter as the angle they are opposite to. Side `a` is opposite angle `A`, side `b` is opposite angle `B`, and side `c` is opposite angle `C`. This is not required, but it's an established convention that I'll stick to.
 
-Realize that adjacent and opposite always have to do with the relationships between angles and sides. It wouldn't make sense to say that one side is adjacent to another side, because in a triangle, all sides are connected to each other. The same thing goes for angles - each angle is directly connected to the other two angles. And of course this means that for any given side in a triangle there is no opposite side. And for any given angle, there is no opposite angle.
+Realize that adjacent and opposite always have to do with the relationships between angles and sides. It wouldn't make sense to say that one side is adjacent to another side, because in a triangle, all sides are adjacent to each other. The same thing goes for angles. And there is no way that any side can be opposite another side or any angle be opposite another angle.
 
 ## Measuring Angles
 
-There are a few different systems for measuring angles. The two I'll use in this book are degrees and radians. I'll discuss radians more in another chapter. For now, let's stick with degrees, as those are generally most familiar from everyday life.
+There are a few different systems for measuring angles. The two I'll use in this book are degrees and radians. I'll discuss radians later in the next section. For now, let's consider degrees, as those are generally most familiar from everyday life.
 
 ### Degrees
 
-We know that a square or rectangle is composed of ninety degree angles. We know that a 180-degree turn sends you back the same way you came from. We even use this in more abstract ways, saying that someone had a 180-degree change of attitude, for example. And we know that 360 degrees is a full circle. You also hear this in abstract terms such as companies that do "360 reviews", meaning that they are reviewed by thier peers - the people "all around" them.
+We know that a square or rectangle is composed of ninety degree angles. We know that a 180-degree turn sends you back the same way you came from. We even use this in more abstract ways, saying that someone had a 180-degree change of attitude, for example. And we know that 360 degrees is a full circle. You also hear this in abstract terms such as companies that do "360 reviews", meaning that employees are reviewed by thier peers - the people "all around" them.
 
-But this 360 degree standard is arbitrary. It most likely comes from a rounding off of the number of days in the year, so that one day is roughly equal to one degree of an orbit of the sun. 360 is also an enormously useful number to divide into. Try to work out all of the integers that divide evenly into 360. There are a lot.
+But this 360 degree standard is arbitrary. There's nothing magic about it. It most likely comes from a rounding off of the number of days in the year, so that one day is roughly equal to one degree of an orbit of the sun. 360 is also an enormously useful number to divide into. You can evenly divide 360 by 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120, 180, and 360. Pretty useful back in the days before calculators.
 
 Generally, when you measure the angles around from 0 to 360, you start pointing due right as zero degrees. As you increase the angle, you go counter-clockwise, through 90, 180, 270 and back to 360 degrees, which is the same as 0. You can see this in figure 1-6.
 
@@ -73,6 +73,8 @@ Because of this, the direction of angles is also flipped in these systems, with 
 
 Later, when I introduce some actual code, I'll show you how you can flip the screen coordinate system to make it act just like a standard Cartesian system.
 
+Note that this not absolutely the way things work for every single graphic programming environment you might work in. Make sure you know how the coordinate system works for the code base you are working in. For this book, I'll assume that the y-axis if flipped, as it is in HTML Canvas.
+
 ### Radians
 
 When you start coding anything to do with angles, you'll find that the math libraries for most common programming languages do not use degrees. Instead, they measure angles in units called radians.
@@ -82,14 +84,14 @@ To understand radians, let's go back to our circle. The distance from the center
 ![One radian is the angle where the arc length equals the radius.](images/figure_1-12.png)
 *Figure 1-12. One radian is the angle where the arc length equals the radius.*
 
-And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter ***PI***. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
+And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter π. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
 
-Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 1-13.
+Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28319. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 1-13.
 
 ![A circle is 2PI radians.](images/figure_1-13.png) 
 *Figure 1-13. A circle is 2PI radians.*
 
-Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just over 6.28.
+Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28319 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just about 6.28319.
 
 So PI radians is 180 degrees. PI/2 radians is 90 degrees PI/3 = 60. 2PI is 360 and so on. Once you get used to the new system of measurement, it's not so bad.
 
@@ -113,7 +115,7 @@ Or, putting PI/2 into the second function, you get (PI/2)/PI which works out to 
 
 ## Properties of Triangles
 
-There are a few properties of triangles that are interesting and useful. One is that if you add up the measurements of all three angles, you will always get exactly 180 degreees. (I'm going back to using degrees for this section.)
+There are a few properties of triangles that are interesting and useful. One is that if you add up the measurements of all three angles, you will always get exactly 180 degrees. (I'm going back to using degrees for this section.)
 
 This property makes it easy to find an unknown angle if you happen to know the other two angles. Say you have a triangle where two angles are 60 degrees and 70 degrees. The total of those is 130 degrees, so you know the third angle must be 50 to equal 180 degrees total.
 
@@ -197,6 +199,6 @@ And from the right angle, you just refer to the adjacent sides as the legs and t
 
 ## Summary
 
-This chapter has mostly been about terminology and relationships. Although there's not much code here, most of what is here is very important and will form the foundation of everything in the book. So if there is something you're not fully clear on, make sure you spend the time now to work it out so it doesn't bite you later on.
+This chapter has mostly been about terminology and relationships. Although there's no code in this chapter, most of what is here is very important and will form the foundation of everything in the book. So if there is something you're not fully clear on, make sure you spend the time now to work it out so it doesn't bite you later on.
 
 \newpage
