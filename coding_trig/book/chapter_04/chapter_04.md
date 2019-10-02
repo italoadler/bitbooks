@@ -108,14 +108,12 @@ Of course we'll need the HTML file as described in the introduction. And this li
 ![Our first sine wave.](images/figure_4-9.png)<br/>
 *Figure 4-9. Our first sine wave.*
 
-But that looks upside down. Normally a sine wave starts at zero and goes UP to one and then back down through zero to negative one and back up to zero. Just remember that our y-axis screen coordinates are reversed from the Cartisian coordinates. If that matters, you can flip the coordinate system by using `scale` right after the `translate` as in listing 4-3.
+But that looks upside down. Normally a sine wave starts at zero and goes UP to one and then back down through zero to negative one and back up to zero. Just remember that our y-axis screen coordinates are reversed from the Cartisian coordinates. If that matters, you can flip the coordinate system by using `scale` right after the `translate` like so:
 
     ...
     context.translate(0, height / 2);
     context.scale(1, -1);
     ...
-
-*Listing 4-3*
 
 This scales everything by 1 on the x-axis, which changes nothing, and -1 on the y-axis, which has the effect of reversing it. Now it looks like a "normal" sine wave - see figure 4-10.
 
