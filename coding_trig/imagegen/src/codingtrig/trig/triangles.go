@@ -19,7 +19,7 @@ func DrawRightTriangle(x, y, w, h float64, s *blgo.Surface) {
 	s.Save()
 	s.SetSourceRGB(0, 0, 0)
 	s.SetLineWidth(4)
-	rSize := 70.0
+	rSize := 30.0
 	rw := rSize
 	rh := -rSize
 	if w < 0 {

@@ -7,8 +7,8 @@ import (
 	"github.com/bit101/blgo"
 )
 
-func Fig_1_3() {
-	filename := "images/figure_1-3.png"
+func Fig_2_3() {
+	filename := "images/figure_2-3.png"
 	width := 2000.0
 	height := 900.0
 	surface := blgo.NewSurface(width, height)
