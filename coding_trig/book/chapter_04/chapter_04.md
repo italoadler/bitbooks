@@ -1,4 +1,4 @@
-# Chapter 3 - Sine and Cosine
+# Chapter 4 - Sine and Cosine
 
 Chapter 3 covered the Pythagorean theorem, which is a special relationship between the three sides of a right triangle. Other than the fact of that one 90 degree angle, it's all about side lengths. As long as you have that right angle, the relationship of the sides holds true, no matter what the other angles are.
 
