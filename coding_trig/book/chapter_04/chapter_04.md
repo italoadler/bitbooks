@@ -160,7 +160,7 @@ And figure 4-12 shows a sine and cosine wave plotted together.
 ![Sine and cosine](images/figure_4-12.png)<br/>
 *Figure 4-12. Sine and cosine.*
 
-You can see that they are really the same curve, with the cosine wave shifteda little bit to the left. The value of cosine at zero degrees is the same as the sine of 90 degrees - one. And the cosine of 90 degrees is the same as the sine of 180 degrees - zero. And so on. So we say that these two curves are 90 degrees out of phase. In the next chapter we'll see how we can use both of these functions together to perform some very useful tasks. In the meantime, let's jump back to sine and learn a little more about that. Everything else about sine in this chapter can apply equally well to cosine.
+You can see that they are really the same curve, with the cosine wave shifted a little bit to the left. The value of cosine at zero degrees is the same as the sine of 90 degrees - one. And the cosine of 90 degrees is the same as the sine of 180 degrees - zero. And so on. So we say that these two curves are 90 degrees out of phase. In the next chapter we'll see how we can use both of these functions together to perform some very useful tasks. In the meantime, let's jump back to sine and learn a little more about that. Everything else about sine in this chapter can apply equally well to cosine.
 
 Going back to listing 4-2, try changing the value that multiply by to get `y` to something smaller, say 20:
 
