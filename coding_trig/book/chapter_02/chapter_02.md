@@ -1,453 +1,204 @@
-# Chapter 2 - The Pythagorean Theorem
+# Chapter 1 - Triangles
 
-In Chapter 1 you learned the different parts of a triangle and some of the basic relationships between those parts. But there are many more interesting and profound relationships there. Trigonometry is the study of those relationships. A large portion of trig is based on right triangles specifically. So for the rest of the book, unless I explicitly state otherwise, you can assume that I'm talking about right triangles.
+Let's start by finding our way around a triangle. First I'll go over all the parts of a triangle and their relationships. And then I'll cover a few basic definitions.
 
-In this chapter, we'll cover a relationship known as the Pythagorean Theorem. This has solely to do with the lengths of the sides of a right triangle. Beyond the fact that you know one of the angles is 90 degrees, angles are irrelevant for this theorem.
+It's obvious by the name alone that a triangle has three angles. You might hear these called "points" or "corners" or some other term. I'll stick to calling them angles. A triangle also has three "sides" or "edges" or "lines" that connect the three angles. I'll call these the sides of the triangle. So there are three angles and three sides. Always and forever. See Figure 2-1.
 
-The Pythagorean Theorem states that the sum of the squares of the two legs of a right triangle is equal to the square of the hypotenuse. That's mouthful, so you often hear it in its much-abbreviated form, "a squared plus b squared = c squared" or "a^2 + b^2 = c^2". And this is true as long as you name the legs `a` and `b` and the hypotenuse `c`. See figure 2-1.
+![Angles and sides](images/figure_2-1.png)
+*Figure 2-1. Angles and sides.*
 
-![Side a squared, plus side b squared equals side c squared.](images/figure_2-1.png)
-*Figure 2-1. Side a squared, plus side b squared equals side c squared.*
+When you go to label these parts, you can do so with single letters. A common convention is to label the three angles with the upper case lettes `A`, `B` and `C`. And the three sides with lower case letters `a`, `b` and `c` as you can see in figure 2-2.
 
-So, if you measure side `a`, square it, measure side `b` and square it, then add those two results together, you'll get the square of the length of side `c`. You'll very often seen this represented with actual squares hanging off each side of the triangle, much like figure 2-2.
+![Labeling angles and sides.](images/figure_2-2.png)
+*Figure 2-2. Labeling angles and sides.*
 
-![The compbined area of the two smaller squares equals the area of the larger one.](images/figure_2-2.png)
-*Figure 2-2. The combined area of the two smaller squares equals the area of the larger one.*
+Angles are also sometimes indicated by drawing a small arc inside the angle as seen in figure 2-3.
 
-Now, the area of square A plus the area of square B is equal to the area of square C. There are numerous proofs of this theorem. Some are quite ingenious and visually pleasing. If you search Youtube, you'll probably come up with a few really nice ones. For the purposes of this book, I'm not going to go into trying to prove the theorem though. I'll dive straight into how to use it.
+![Arcs indicate angles.](images/figure_2-3.png)
+*Figure 2-3. Arcs indicate angles.*
 
-One of the core uses of the Pythagorean Theorem is measuring the distance between any two arbitrary points on a two-dimensional plane. See figure 2-3.
+Note that each angle is connected to exactly two sides. In fact, it's the intersection of those two sides that creates that angle. The term for this is the "adjacent" sides. Here, angle `A` is created by the intersection of sides `b` and `c`. So angle `A`'s adjacent sides are `b` and `c`. Or to put it another way, sides `b` and `c` are adjacent to angle `A`. See figure 2-4. If this is new to you, take a few seconds and figure out the adjacent sides for angles `B` and `C`.
 
-![The line represents the distance between the two points.](images/figure_2-3.png)
-*Figure 2-3. The line represents the distance between the two points.*
+![Adjacent sides.](images/figure_2-4.png)
+*Figure 2-4. Adjacent sides.*
 
-It might not be immediately obvious how the theorem would help in this case. There's no triangle here, much less a right triangle. There are only two points, which can only create a line, not a triangle. Let me show you the trickery. First, in figure 2-4, I'll extend a line down along the y-axis from point A, and a line across on the x-axis from point B.
+Also note that side `a` is not connected to angle `A` at all. It's all the way across on the other end of the triangle, directly opposite angle `A`. So we say that side `a` is opposite angle `A`. Or angle `A`'s opposite side is `a`. So any single angle of a triangle has exactly two adjacent sides and one opposite side. Check out figure 2-5.
 
-![Extend lines from each point.](images/figure_2-4.png)
-*Figure 2-4. Extend lines from each point.*
+![Opposite side.](images/figure_2-5.png)
+*Figure 2-5. Opposite side.*
 
-Magically, a triangle appears! Not just any triangle, either. It's a right triangle! And if you calculate the distance between the two points on the x-axis, by subtracting one from the other, you get the length of that side. Do the same on the y-axis and you have the length of that side. Square each one, add the results and take the square root of that, and you have the distance between the two points. See figure 2-5.
+I've arranged this so the opposite sides have the same letter as the angle they are opposite to. Side `a` is opposite angle `A`, side `b` is opposite angle `B`, and side `c` is opposite angle `C`. This is not required, but it's an established convention that I'll stick to.
 
-![Calculate the length of the two legs by subtracting.](images/figure_2-5.png)
-*Figure 2-5. Calculate the length of the two legs by subtracting.*
+Realize that adjacent and opposite always have to do with the relationships between angles and sides. It wouldn't make sense to say that one side is adjacent to another side, because in a triangle, all sides are adjacent to each other. The same thing goes for angles. And there is no way that any side can be opposite another side or any angle be opposite another angle.
 
-By now, I bet you're ready to write some code. Let's do it. Start with the basic project template described in the introduction. This sets up a canvas that fills the browser window, and gets its 2d drawing context.
+## Measuring Angles
 
-The idea is that when the user clicks on the canvas, the code creates a 2d point there. When the canvas is clicked again, it creates another point, draws a line between them, and calculates the distance between them. On a third click, the points are cleared.
+There are a few different systems for measuring angles. The two I'll use in this book are degrees and radians. I'll discuss radians later in the next section. For now, let's consider degrees, as those are generally most familiar from everyday life.
 
-To start with, let's make an array to hold the points, and set up the click handler. You can see this in listing 2-1.
+### Degrees
+
+We know that a square or rectangle is composed of ninety degree angles. We know that a 180-degree turn sends you back the same way you came from. We even use this in more abstract ways, saying that someone had a 180-degree change of attitude, for example. And we know that 360 degrees is a full circle. You also hear this in abstract terms such as companies that do "360 reviews", meaning that employees are reviewed by thier peers - the people "all around" them.
+
+But this 360 degree standard is arbitrary. There's nothing magic about it. It most likely comes from a rounding off of the number of days in the year, so that one day is roughly equal to one degree of an orbit of the sun. 360 is also an enormously useful number to divide into. You can evenly divide 360 by 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120, 180, and 360. Pretty useful back in the days before calculators.
+
+Generally, when you measure the angles around from 0 to 360, you start pointing due right as zero degrees. As you increase the angle, you go counter-clockwise, through 90, 180, 270 and back to 360 degrees, which is the same as 0. You can see this in figure 2-6.
+
+![Angles going around counter-clockwise.](images/figure_2-6.png)
+*Figure 2-6. Angles going around counter-clockwise.*
+
+You can also go the other way - clockwise - using negative angles. So -90 degrees is the same as 270 degrees. -180 is the same as 180, and -270 is the same as 90. And of course, -360 degrees is the same as 360 or 0. See figure 2-7.
+
+![Negative angles going around clockwise.](images/figure_2-7.png)
+*Figure 2-7. Negative angles going around clockwise.*
+
+Now while this counter-clockwise rotation is somewhat of a standard, it is based on a system know as the Cartesian coordinate system. You can see the Cartesian system in figure 2-8. In this system (for two dimensions) you have two axes, which are usually referred to as `x` and `y`. The x-axis increases positively as it goes to the right and negatively as it goes to the left. And the y-axis increases positively as it goes up and negatively as it goes down. Where both axes are zero, this is called the origin.
+
+![Cartesian coordinates.](images/figure_2-8.png)
+*Figure 2-8. Cartesian coordinates.
+
+However, in many screen-based graphics systems, the y-axis is reversed. The origin usually defaults to the top left corner of the screen. The x-axis is the same, but the y-axis increases as it goes down towards the bottom of the screen. Screen coordinates are demonstrated in figure 2-9.
+
+![Screen coordinates.](images/figure_2-9.png)
+*Figure 2-9. Screen coordinates.
+
+You can usually move the origin to any other location, which gives you access to the negative regions of the x- and y-axes. In figure 2-10, you can clearly see that this is the Cartesian coordinate system flipped upside down.
+
+![Screen coordinates, translated.](images/figure_2-10.png)
+*Figure 2-10. Screen coordinates, translated.
+
+Because of this, the direction of angles is also flipped in these systems, with angles increasing as they go around counter-clockwise. See figure 2-11.
+
+![Angles in screen coordinates.](images/figure_2-11.png)
+*Figure 2-11. Angles in screen coordinates.*
+
+Later, when I introduce some actual code, I'll show you how you can flip the screen coordinate system to make it act just like a standard Cartesian system.
+
+Note that this not absolutely the way things work for every single graphic programming environment you might work in. Make sure you know how the coordinate system works for the code base you are working in. For this book, I'll assume that the y-axis if flipped, as it is in HTML Canvas.
+
+### Radians
+
+When you start coding anything to do with angles, you'll find that the math libraries for most common programming languages do not use degrees. Instead, they measure angles in units called radians.
+
+To understand radians, let's go back to our circle. The distance from the center of the circle to any point on the perimeter of the circle is the circle's radius. For any angle, you can measure the length of the arc created by that angle. When that arc length is the same as the length of the radius, then we have an angle of one radian. That works out to just about 57.2958 degrees. You can see a radian in figure 2-12. It seems like a strange and rather arbitrary way to divide up a circle, but remember, so is 360.
+
+![One radian is the angle where the arc length equals the radius.](images/figure_2-12.png)
+*Figure 2-12. One radian is the angle where the arc length equals the radius.*
+
+And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter π. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
+
+Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28319. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 2-13.
+
+![A circle is 2PI radians.](images/figure_2-13.png) 
+*Figure 2-13. A circle is 2PI radians.*
+
+Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28319 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just about 6.28319.
+
+So PI radians is 180 degrees. PI/2 radians is 90 degrees PI/3 = 60. 2PI is 360 and so on. Once you get used to the new system of measurement, it's not so bad.
+
+### Converting between degrees and radians
+
+Often, you'll need to convert between these two systems of angular measurement. So it's useful to create a couple of functions that do this for you. Listing 2-1 is the first bit of code for the book.
+
+    function degreesToRadians(degrees) {
+      return degrees / 180 * Math.PI;
+    }
+
+    function radiansToDegrees(radians) {
+      return radians / Math.PI * 180;
+    }
 
 *Listing 2-1*
 
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
+You can mentally test this with a common angle like 90 degrees, which is PI/2 radians. Putting 90 as an argument to the first function, you get 90/180 or 1/2, times Math.PI equals PI/2.
 
-    const points = [];
+Or, putting PI/2 into the second function, you get (PI/2)/PI which works out to 1/2. Times 180 equals 90.
 
-    canvas.addEventListener("click", onClick);
+## Properties of Triangles
 
-Next, let's create the `onClick` handler. See listing 2-2. If there are less than two points in the array, it will add a new point based on the clicked position. If there are already two points, it will clear the array by setting its length to zero. Finally, it will call a `render` function, which I'll show you right after this.
+There are a few properties of triangles that are interesting and useful. One is that if you add up the measurements of all three angles, you will always get exactly 180 degrees. (I'm going back to using degrees for this section.)
 
-*Listing 2-2*
+This property makes it easy to find an unknown angle if you happen to know the other two angles. Say you have a triangle where two angles are 60 degrees and 70 degrees. The total of those is 130 degrees, so you know the third angle must be 50 to equal 180 degrees total.
 
-    function onClick(event) {
-      if (points.length < 2) {
-        points.push({ x: event.clientX, y: event.clientY });
-      } else {
-        points.length = 0;
-      }
-      render();
-    }
+Another useful thing to know is that the measurement of a given angle is proportional to the length of the opposite side.
 
-For now, the points will just be plain JavaScript objects with an `x` and `y` property. We can get those from the `event`'s `clientX` and `clientY` properties. This works well because the canvas is set to fill the browser window and all margins and paddings have been removed. If the canvas was not directly aligned with the browser window, you'd have to convert between the `clientX` and `clientY` positions and the canvas clicked position. If you find yourself needing to do that, the `getClientBoundingRect` function will help you there. In this book, though, all the canvases will be aligned, so you won't have to worry about it.
+In figure 2-14, let's assume that the lengths of sides `b` and `c` will not change. If you make angle `A` smaller, side `a` will be proportionately smaller. And as you increase the angle, the length of side `a` grows proportionately.
 
-Now that `render` function. To start with, this will clear the canvas and draw any points that are in the `points` array. See listing 2-3.
+![As angle A increases, the length of side a increases.](images/figure_2-14.png) 
+*Figure 2-14. As angle A increases, the length of side a increases.*
 
-*Listing 2-3*
+Now if you make angle `A` very close to 180 degrees, as I did in figure 2-15, then the other two angles must become very close to 0 degrees.
 
-    function render() {
-      context.clearRect(0, 0, width, height);
-      for(let i = 0; i < points.length; i++) {
-        const p = points[i];
-        context.beginPath();
-        context.arc(p.x, p.y, 5, 0, Math.PI * 2);
-        context.fill();
-      }
-    }
+![Angle A is very close to 180 degrees.](images/figure_2-15.png) 
+*Figure 2-15. Angle A is very close to 180 degrees.*
 
-In the canvas drawing API, circles are drawn by calling `beginPath`, then drawing an arc, then calling `fill` or `stroke`. The `arc` method takes the `x`, `y` position of the center of the circle, the radius of the circle, and the start and end angles to draw the arc, in radians. To draw a full circle, go from 0 radians to PI * 2 radians (360 degrees).
+Let's go all the way and make angle `A` exactly 180 degrees. See figure 2-16.
 
-You can test this now by loading index.html in any modern browser. Click once on the canvas and a point will be drawn where you clicked. Click again, another point. Click a third time, and they both go away. Keep clicking to create more pairs of points.
+![Angle A is exactly 180 degrees.](images/figure_2-16.png) 
+*Figure 2-16. Angle A is exactly 180 degrees.*
 
-If there are zero or one points, that's all that needs to be done. But if there are two points on the screen, you want to calculate the distance between them. So the rest of this function will go in a conditional that checks first to see if there are two points in the `points` array. If so, let's visually draw that right triangle with the code in listing 2-4.
+This means the other two angles must be exactly 0 degrees. This no longer looks like a triangle at all, but mathematically, there's no problem. It still follows all the rules. Also notice that the length of side `a` is now exactly the same as the sum of sides `b` and `c`.
 
-*Listing 2-4*
+This brings us to a property relating to the sides of triangles. In most cases, the length of any one side will be less than the sum of the other two sides. At best, it will be equal to the sum of the other two sides.
 
-    function render() {
-      context.clearRect(0, 0, width, height);
-      for(let i = 0; i < points.length; i++) {
-        const p = points[i];
-        context.beginPath();
-        context.arc(p.x, p.y, 5, 0, Math.PI * 2);
-        context.fill();
-      }
-      if (points.length === 2) {
-        context.beginPath();
-        context.moveTo(points[0].x, points[0].y);
-        context.lineTo(points[1].x, points[1].y);
-        context.lineTo(points[1].x, points[0].y);
-        context.lineTo(points[0].x, points[0].y);
-        context.stroke();
-      }
-    }
+These last two properties are not something you'll use directly very often, but it's often helpful to keep them in mind as you explore other concepts related to trigonometry.
 
-Again, begin a path. Then move to the first point, draw a line to the second point. The next line is tricky. It draws a line to the `x` of point 1 and the `y` of point 0. If you refer back to the earlier figures in this chapter, you'll see that this is the intersection of the two lines that make up the right angle of the triangle. Finally, one last line back to the first point, and stroke that path.
+## Special Triangles
 
-Now when you run this and click around, you'll get one point, then two points with a right triangle drawn to fit those two points. Click again to clear. You'll notice that depending on where you click, you might get the triangle being drawn so that its right angle is in an upper corner or a lower corner. You can see some examples in figure 2-6.
+I've covered most of what you need to know about triangles in general at this point. But there are a few special types of triangles that you should know about. They have special properties all of their own.
 
-![Drawing some triangles with code.](images/figure_2-6.png)
-*Figure 2-6. Drawing some triangles with code.*
+### Equalateral Triangles
 
-This is no problem. It all depends on that intersecting point. You could change it so it is created with the `x` of point 0 and the `y` of point 1, which would reverse the way it is drawn. Or you could do some conditional logic to find out which point was lower on the y-axis and use its `y` and the other 
+The first special triangle is the equalateral triangle. See figure 2-17. In this case, all the angles have the same measurement, and all the sides have the same length. Because the sum of the angles must add up to 180 degrees, each angle must be 180/3 or 60 degrees. And so it is. It does not matter what lengths the sides are, but whatever they are, they are all equal to each other.
 
-point's `x`. This would force it to always orient the right angle in one of the lower corners. I'm not going to worry about it for the sake of this example though.
+![Equalateral triangle](images/figure_2-17.png) 
+*Figure 2-17. Equalateral triangle.*
 
-Now, in listing 2-5, let's calculate the lengths of the sides of this triangle.
+### Isosceles Triangles
 
-*Listing 2-5*
+The next special triangle is the Isosceles triangle. See figure 2-18. In this case, two of the angles have the same measurement. Hence, two of the sides have the same length.
 
-    const a = Math.abs(points[0].x - points[1].x);
-    const b = Math.abs(points[0].y - points[1].y);
-    const c = Math.sqrt(a * a + b * b);
+![Isosceles triangle](images/figure_2-18.png) 
+*Figure 2-18. Isosceles triangle.*
 
-For sides `a` and `b`, subtract the points' `x` and `y` values. It doesn't really matter which one you subtract from which here. But depending on their positions, you have a good chance of winding up with a negative number. For the distance calculation, that is not a problem, as you'll be squaring both of them, which will make them positive in either case. But in this case, you'll be displaying the distances on the canvas, so it's nice to use `Math.abs` to coerce it into a positive value. The distance itself is calculated all in one line, squaring `a`, squaring `b` and taking the square root.
+It's common to indicate equality by drawing one or more slashes through sides or the arcs in angles. Here, the single slash through sides `b` and `c` indicate that they are equal. And the double slash through the arcs of the two angles indicate that they have equal measurements. 
 
-Finally, let's display the values right on the canvas, as seen in listing 2-6.
+### Acute and Obtuse Triangles
 
-*Listing 2-6*
+Then we come to acute and obtuse triangles, as seen in figure 2-19. In terms of angles, obtuse means greater than 90 degrees, and acute means less than 90 degrees. An obtuse triangle is one in which one of the angles is more than 90 degrees. An acute triangle is where all three angles are less than 90 degrees.
 
-    context.fillText(a, (points[0].x + points[1].x) / 2, points[0].y - 5);
-    context.fillText(b, points[1].x + 5, (points[0].y + points[1].y) / 2);
-    context.fillText( c, (points[0].x + points[1].x) / 2 - 10,
-                         (points[0].y + points[1].y) / 2 - 10);
-
-This uses the `fillText` method to draw the value of `a`, `b`, and `c` to the canvas, calculating the position to be roughly at the center point of each line, with a bit of an offset so it's not sitting right on the line. The result is in figure 2-7.
-
-![Labeling the distances.](images/figure_2-7.png)
-*Figure 2-7. Labeling the distances.*
+![Acute and obtuse triangles](images/figure_2-19.png)
+*Figure 2-19. Acute and obtuse triangles.*
 
-Listing 2-7 shows the full final code for this example:
+You might be wondering why I said just one angle in an obtuse triangle is greater than 90. Remember that the sum of the angles must add up to 180 degrees. If you had, say two angles that measured 91 degrees, the sum would already be 182 without even considering the third angle. So this is impossible. If you still have doubts, try to draw a triangle with two angles greater than 90 degrees.
 
-*Listing 2-7*
-
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    const points = [];
-
-    canvas.addEventListener("click", onClick);
-
-    function onClick(event) {
-      if (points.length < 2) {
-        points.push({ x: event.clientX, y: event.clientY });
-      } else {
-        points.length = 0;
-      }
-      render();
-    }
-
-    function render() {
-      context.clearRect(0, 0, width, height);
-      for(let i = 0; i < points.length; i++) {
-        const p = points[i];
-        context.beginPath();
-        context.arc(p.x, p.y, 5, 0, Math.PI * 2);
-        context.fill();
-      }
-      if (points.length === 2) {
-        context.beginPath();
-        context.moveTo(points[0].x, points[0].y);
-        context.lineTo(points[1].x, points[1].y);
-        context.lineTo(points[1].x, points[0].y);
-        context.lineTo(points[0].x, points[0].y);
-        context.stroke();
-
-        const a = Math.abs(points[0].x - points[1].x);
-        const b = Math.abs(points[0].y - points[1].y);
-        const c = Math.sqrt(a * a + b * b);
-
-        context.fillText(a, (points[0].x + points[1].x) / 2, points[0].y - 5);
-        context.fillText(b, points[1].x + 5, (points[0].y + points[1].y) / 2);
-        context.fillText(c, (points[0].x + points[1].x) / 2 - 10,
-                            (points[0].y + points[1].y) / 2 - 10);
-
-      }
-    }
-
-## Making a Point Class
-
-At this time, let's start thinking about writing some reusable code. I'll start with a class called `Point` in a file called `point.js`. See listing 2-8. If you already have some other library that contains a Point class, that should work fine. But you might want to follow along anyway and create this simple class to fully understand how it works.
-
-*Listing 2-8*
-
-    class Point {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-      }
-
-      distance(p) {
-        const dx = this.x - p.x;
-        const dy = this.y - p.y;
-        return Math.sqrt(dx * dx + dy * dy);
-      }
-    }
-
-This is quite a simple class for now. Its constructor takes an `x` and a `y` values and saves those. It has a `distance` method that does what I just described in the earlier example. Its argument is another `Point` instance. Since this is only calculating the final distance, it doesn't need to use `Math.abs` to convert the side lengths to positive numbers.
-
-You'll need to load this `Point` class in the HTML file, something like in listing 2-9.
-
-*Listing 2-9*
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <style type="text/css">
-        html, body {
-          margin: 0;
-          padding: 0;
-        }
-        canvas {
-          display: block;
-        }
-        </style>
-      </head>
-      <body>
-        <canvas id="canvas"></canvas>
-        <script type="text/javascript" src="point.js"></script>
-        <script type="text/javascript" src="main.js"></script>
-      </body>
-    </html>
+### Right Triangles
 
-Of course, feel free to turn this into a nodejs module or an ES6 module, or whatever else works for you. I'm going to keep things as simple as possible here.
+And finally we come down to what will be the most important type of triangle in this book, the right triangle. See figure 2-20. A right triangle is where one of the angles is exactly 90 degrees. A right angle is an angle that measures exactly 90 degrees. We symbolize the right angle by drawing a small square in that corner, rather than the small arc.
 
-Now, the `main.js` file can be simplified a bit. See listing 2-10.
+![Right triangle.](images/figure_2-20.png) 
+*Figure 2-20. Right triangle.*
 
-*Listing 2-10*
+In some more casual situations where it is well established that you are working with right triangles and it is obvious which angle is 90 degrees, you might see the little square omitted. But I'll try to be diligent and include them in this book.
 
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
+Right triangles have a whole slew of interesting properties. Most of the rest of the book will be involved in exploring some of those different properties. But there are also a couple of new terms that go along with right triangles that I'll get out of the way right here and now.
 
-    const points = [];
+The two sides that are adjacent to the right angle are known as the legs of the right triangle.
 
-    canvas.addEventListener("click", onClick);
+The side opposite the right angle is known as the hypotenuse. These are all shown in figure 2-21.
 
-    function onClick(event) {
-      if (points.length < 2) {
-        points.push(new Point(event.clientX, event.clientY));
-      } else {
-        points.length = 0;
-      }
-      render();
-    }
-
-    function render() {
-      context.clearRect(0, 0, width, height);
-      for(let i = 0; i < points.length; i++) {
-        const p = points[i];
-        context.beginPath();
-        context.arc(p.x, p.y, 5, 0, Math.PI * 2);
-        context.fill();
-      }
-      if (points.length === 2) {
-        context.beginPath();
-        context.moveTo(points[0].x, points[0].y);
-        context.lineTo(points[1].x, points[1].y);
-        context.stroke();
+![Sides and hypotenuse.](images/figure_2-21.png) 
+*Figure 2-21. Sides and hypotenuse.*
 
-        const dist = points[0].distance(points[1]);
-
-        context.fillText(dist, (points[0].x + points[1].x) / 2 - 10,
-                               (points[0].y + points[1].y) / 2 - 10);
-      }
-    }
-
-Instead of creating a new generic point object, this creates an instance of the `Point` class and pushes it on the array. Listing 2-11 shows this in isolation.
+There's also a slight change in some existing terminology. In most triangles, you can say that any angle has two adjacent sides. But in a right triangle, you normally don't refer to the hypotenuse as an adjacent side. It's just the hypotenuse.
 
-*Listing 2-11*
+So, from angle `A`'s perspective, it has an opposite side (side `a`), and adjacent side (side `b`), and the hypotenuse. 
 
-    points.push(new Point(event.clientX, event.clientY));
+From angle `B`'s perspective, its opposite side is side `b`, its adjacent side is side `a` and the hypotenuse is the same old hypotenuse.
 
-Then, when it goes to calculate the distance, it can just get one point and call its `distance` method, passing in the other point, as seen in isolation in listing 2-12.
-
-*Listing 2-12*
-
-    const dist = points[0].distance(points[1]);
-
-I left off drawing the other lines and labeling their lengths, focusing just on the distance. You can see the result in figure 2.8.
-
-![The distance between two points.](images/figure_2-8.png)
-*Figure 2-8. The distance between two points.*
-
-## Circle Collisions
-
-What else can you do with the Pythagorean theorem? Oddly enough, although the theorem deals with triangles, it is very useful for detecting whether a point is within a circle, or whether a circle intersects another circle.
-
-For this next example, I'll start off with exactly the same HTML file, including the new `Point` class. And I'll keep the same initial JavaScript for getting the canvas reference. Then I'll create two points and a value for a radius, and make a call to a function called `render`. This is listing 2-13.
-
-*Listing 2-13*
-
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    const p0 = new Point(width / 2, height / 2);
-    const p1 = new Point(0, 0);
-    const radius = 100;
-    render();
-
-You'll see that the first point, `p0` is set to the center of the canvas. The second one, `p1` is initially set to 0, 0. 
-
-For now, the `render` function just draws a circle at the location of `p0` using the value of `radius`. See listing 2-14.
-
-*Listing 2-14*
-
-    function render() {
-      context.clearRect(0, 0, width, height);
-      context.beginPath();
-      context.arc(p0.x, p0.y, radius, 0, Math.PI * 2);
-      context.fill();
-    }
-
-The goal is to change the color of the circle when the mouse cursor is within the circle, and change it back when it leaves. So if you set the position of `p1` to be equal to the current mouse position, you can then use the `Point.distance` method to calculate how far apart the two points are. If that distance is less than `radius` than the mouse cursor is within the circle. Listing 2-15 shows the code in full.
-
-*Listing 2-15*
-
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    const p0 = new Point(width / 2, height / 2);
-    const p1 = new Point(0, 0);
-    const radius = 100;
-    render();
-
-    canvas.addEventListener("mousemove", onMouseMove);
-
-    function onMouseMove(event) {
-      p1.x = event.clientX;
-      p1.y = event.clientY;
-      render();
-    }
-
-    function render() {
-      context.clearRect(0, 0, width, height);
-      const dist = p1.distance(p0);
-      if(dist < radius) {
-        context.fillStyle = "red";
-      } else {
-        context.fillStyle = "black";
-      }
-
-      context.beginPath();
-      context.arc(p0.x, p0.y, radius, 0, Math.PI * 2);
-      context.fill();
-    }
-
-The `render` method calculates `dist` using `p1.distance(p0)`. If `dist` is less than `render`, set the fill style to red. Otherwise, set it to black. The effect is that when you mouse over the circle, it changes to red. Mouse out, back to black.
-
-You can do other things here, too. Listing 2-16 demonstrates using CSS to change the cursor style to indicate that the circle is possibly interactive in some way.
-
-*Listing 2-16*
-
-    if(dist < radius) {
-      context.fillStyle = "red";
-      canvas.style.cursor = "pointer";
-    } else {
-      context.fillStyle = "black";
-      canvas.style.cursor = "default";
-    }
-
-You can expand on this to do circle-to-circle collision. A circle is defined by a center point and a radius. If you have two circles, A and B, you can easily find the distance between their two center points. If that distance is less than the sum of the two circles' radii, they are overlapping. If that distance is greater, they are not.
-
-The code for this doesn't change a whole lot. It's all in listing 2-17.
-
-*Listing 2-17*
-
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    const width = canvas.width = window.innerWidth;
-    const height = canvas.height = window.innerHeight;
-
-    const p0 = new Point(width / 2, height / 2);
-    const p1 = new Point(0, 0);
-    const r0 = 100;
-    const r1 = 60;
-
-    render();
-
-    canvas.addEventListener("mousemove", onMouseMove);
-
-    function onMouseMove(event) {
-      p1.x = event.clientX;
-      p1.y = event.clientY;
-      render();
-    }
-
-    function render() {
-      context.clearRect(0, 0, width, height);
-      const dist = p1.distance(p0);
-      if(dist < r0 + r1) {
-        context.fillStyle = "red";
-      } else {
-        context.fillStyle = "black";
-      }
-
-      context.beginPath();
-      context.arc(p0.x, p0.y, r0, 0, Math.PI * 2);
-      context.fill();
-
-      context.beginPath();
-      context.arc(p1.x, p1.y, r1, 0, Math.PI * 2);
-      context.fill();
-    }
-
-Instead of just `radius`, I've defined `r0` and `r` for the two circles. Then in the `render` method, instead of checking if `dist < radius` I check `dist < r0 + r`. Finally, I draw both circles, using `r0` for `p0` and `r` for `p1`.
-
-Now as you move the mouse around, a 60-pixel radius circle is drawn around the cursor. When that circle touches the center circle, they both turn red. Try changing the two radius values. Things should continue to work perfectly. In fact, if you set `r` to zero, you'll wind up with the same setup you had in the earlier example. Figure 2.9 shows the result of this example.
-
-![Circle-circle collision detection.](images/figure_2-9.png)
-*Figure 2-9. Circle-circle collision detection.*
-
-Everything in this section comes under the heading of "collision detection". This is useful in user interfaces to tell when a user has clicked on a certain area of the screen. It's also useful in games. If a game object is a circle, or can be approximated by a circle, you can use these techniques to detect game collisions. Examples would be a bullet hitting a spaceship (circle-point collision) or two spaceships hitting each other (circle-circle collision). Obviously, there are many other types of collision detection for other shapes, but this is the one that most applies to the subject matter of this book.
-
-## Three dimensions
-
-It's also worth noting that the Pythagorean theorem also works in three dimensions (and beyond). If you have two three-dimensional points, where each one has `x`, `y` and `z` positions in 3d space, you find the distance between the two the same way you do in 2d. Get the distance on each axis, square it, add them together and take the square root. The code might look something like in listing 2-18.
-
-*Listing 2-18*
-
-    function distance3d(p0, p1) {
-      const dx = p0.x - p1.x;
-      const dy = p0.y - p1.y;
-      const dz = p0.z - p1.z;
-      return Math.sqrt(dx * dx + dy * dy + dz * dz);
-    }
-
-This book will stick to two dimensions only, but if you venture into the realms of 3d, you'll at least have that much to start with.
+And from the right angle, you just refer to the adjacent sides as the legs and the opposite side as the hypotenuse.
 
 ## Summary
 
-In this chapter you learned about the Pythagorean theorem and how that can be used to find the distance between two points. Although there are other uses for the theorem, this is by far the one you'll use it for most often.
-
-Experiment with all of the examples in this chapter and see what else you can do with them.
+This chapter has mostly been about terminology and relationships. Although there's no code in this chapter, most of what is here is very important and will form the foundation of everything in the book. So if there is something you're not fully clear on, make sure you spend the time now to work it out so it doesn't bite you later on.
 
 \newpage

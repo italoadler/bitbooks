@@ -1,204 +1,120 @@
-# Chapter 1 - Triangles
+# Introduction
 
-Let's start by finding our way around a triangle. First I'll go over all the parts of a triangle and their relationships. And then I'll cover a few basic definitions.
+Well, here you are, reading a book about trigonometry. There's a good chance you're grimacing somewhat - biting the bullet and hoping this won't be too bad. Trigonometry can be hard. People struggle with it. You might be thinking that this is a subject you need to get a better handle on, and if this book helps you a bit, it might be worth the pain.
 
-It's obvious by the name alone that a triangle has three angles. You might hear these called "points" or "corners" or some other term. I'll stick to calling them angles. A triangle also has three "sides" or "edges" or "lines" that connect the three angles. I'll call these the sides of the triangle. So there are three angles and three sides. Always and forever. See Figure 1-1.
+I can't promise you that it won't be hard or it won't be painful. That's somewhat out of my control. But I'm going to do my utmost to make it as easy as possible. If I succeed, it really might not be painful at all. You might even enjoy reading this book.
 
-![Angles and sides](images/figure_1-1.png)
-*Figure 1-1. Angles and sides.*
+## Do you need to learn trigonometry for programming?
 
-When you go to label these parts, you can do so with single letters. A common convention is to label the three angles with the upper case lettes `A`, `B` and `C`. And the three sides with lower case letters `a`, `b` and `c` as you can see in figure 1-2.
+Not necessarily. It all depends what kind of programming you're doing. If you're doing back end database and api coding, you might never need a line of trig. Even if you're doing pure front end application logic and UI code, the times you really need trig may be few and far between.
 
-![Labeling angles and sides.](images/figure_1-2.png)
-*Figure 1-2. Labeling angles and sides.*
+But if you're doing any kind of graphics programming, simulations, game development, low-level audio programming, or creative coding, you're probably going to use some trigonometry every day of your life. Or at least every day that you write code.
 
-Angles are also sometimes indicated by drawing a small arc inside the angle as seen in figure 1-3.
+Trigonometry is the study of the relationship of the angles and side lengths of triangles. It may seem strange that is is used so often, even if you're not drawing triangles. But it turns out that trigonometry's end uses far surpass just measuring triangles. Say you want to make something oscillate back and forth or up and down. A sine wave is a great solution. See figure 1-1.
 
-![Arcs indicate angles.](images/figure_1-3.png)
-*Figure 1-3. Arcs indicate angles.*
+![A sine wave.](images/figure_1-1.png)
+*Figure 1-1. A sine wave.*
 
-Note that each angle is connected to exactly two sides. In fact, it's the intersection of those two sides that creates that angle. The term for this is the "adjacent" sides. Here, angle `A` is created by the intersection of sides `b` and `c`. So angle `A`'s adjacent sides are `b` and `c`. Or to put it another way, sides `b` and `c` are adjacent to angle `A`. See figure 1-4. If this is new to you, take a few seconds and figure out the adjacent sides for angles `B` and `C`.
+Want to move something around in a circle or oval? Or arrange objects around in a circle or oval? Trig is vital there. Want to make an object point at or move towards the mouse, or some other point? Trigonometry again. Need to know the distance from one point on the screen to another (as seen in figure 1-2)? Trigonometry is involved.
 
-![Adjacent sides.](images/figure_1-4.png)
-*Figure 1-4. Adjacent sides.*
+![Using trig to find distance between two points.](images/figure_1-2.png)
+*Figure 1-2. Using trig to find distance between two points.*
 
-Also note that side `a` is not connected to angle `A` at all. It's all the way across on the other end of the triangle, directly opposite angle `A`. So we say that side `a` is opposite angle `A`. Or angle `A`'s opposite side is `a`. So any single angle of a triangle has exactly two adjacent sides and one opposite side. Check out figure 1-5.
+Simulating any kind of physics with acceleration and velocity? You'll need trig. In audio programming, sound waves can be generated directly with sine waves, or can be synthesized by multiple sine waves at different frequencies and strengths.
 
-![Opposite side.](images/figure_1-5.png)
-*Figure 1-5. Opposite side.*
+The list is endless. In this book I'll cover most of the above examples, and a lot more. There's a whole lot more that I won't be able to cover, but once you know the basics, you'll be ready to tackle anything trig-related.
 
-I've arranged this so the opposite sides have the same letter as the angle they are opposite to. Side `a` is opposite angle `A`, side `b` is opposite angle `B`, and side `c` is opposite angle `C`. This is not required, but it's an established convention that I'll stick to.
+## Why JavaScript?
 
-Realize that adjacent and opposite always have to do with the relationships between angles and sides. It wouldn't make sense to say that one side is adjacent to another side, because in a triangle, all sides are adjacent to each other. The same thing goes for angles. And there is no way that any side can be opposite another side or any angle be opposite another angle.
+The text of this book will use JavaScript to demonstrate working code for the various concepts thar are being explained. But those concepts transcend any single language. The accompanying source files, however, will include code in JavaScript and at least one or two other languages to start. It's my hope that even more languages will be added over time. Every effort will be made to try to have the sample files in other languages match, as much as possible, the original JavaScript shown in the book's text. Of course, there will be differences; there's no escaping that. But you should be able to follow along with the text of the book and the code in the language of your choice.
 
-## Measuring Angles
+JavaScript was chosen as the default language for a number of reasons.
 
-There are a few different systems for measuring angles. The two I'll use in this book are degrees and radians. I'll discuss radians later in the next section. For now, let's consider degrees, as those are generally most familiar from everyday life.
+1. It's free and open source.
 
-### Degrees
+2. It runs on pretty much any platform in existence today.
 
-We know that a square or rectangle is composed of ninety degree angles. We know that a 180-degree turn sends you back the same way you came from. We even use this in more abstract ways, saying that someone had a 180-degree change of attitude, for example. And we know that 360 degrees is a full circle. You also hear this in abstract terms such as companies that do "360 reviews", meaning that employees are reviewed by thier peers - the people "all around" them.
+3. You don't need any special tools to code, compile and run JavaScript programs.
 
-But this 360 degree standard is arbitrary. There's nothing magic about it. It most likely comes from a rounding off of the number of days in the year, so that one day is roughly equal to one degree of an orbit of the sun. 360 is also an enormously useful number to divide into. You can evenly divide 360 by 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120, 180, and 360. Pretty useful back in the days before calculators.
+4. JavaScript is generally pretty easy to learn and a huge percentage of programmers have at least some experience with it.
 
-Generally, when you measure the angles around from 0 to 360, you start pointing due right as zero degrees. As you increase the angle, you go counter-clockwise, through 90, 180, 270 and back to 360 degrees, which is the same as 0. You can see this in figure 1-6.
+5. HTML5 comes with a Canvas object that has a very usable graphics api.
 
-![Angles going around counter-clockwise.](images/figure_1-6.png)
-*Figure 1-6. Angles going around counter-clockwise.*
+## Math Library Comparisons
 
-You can also go the other way - clockwise - using negative angles. So -90 degrees is the same as 270 degrees. -180 is the same as 180, and -270 is the same as 90. And of course, -360 degrees is the same as 360 or 0. See figure 1-7.
+If you're coding trigonometry, you're going to need a decent math library. Most modern languages come with one of those built in. And they are remarkably standard across many languages.
 
-![Negative angles going around clockwise.](images/figure_1-7.png)
-*Figure 1-7. Negative angles going around clockwise.*
+Listing 1-1 shows a few of the more common functions of the JavaScript math library, compared to the math libraries of some other common languages.
 
-Now while this counter-clockwise rotation is somewhat of a standard, it is based on a system know as the Cartesian coordinate system. You can see the Cartesian system in figure 1-8. In this system (for two dimensions) you have two axes, which are usually referred to as `x` and `y`. The x-axis increases positively as it goes to the right and negatively as it goes to the left. And the y-axis increases positively as it goes up and negatively as it goes down. Where both axes are zero, this is called the origin.
-
-![Cartesian coordinates.](images/figure_1-8.png)
-*Figure 1-8. Cartesian coordinates.
-
-However, in many screen-based graphics systems, the y-axis is reversed. The origin usually defaults to the top left corner of the screen. The x-axis is the same, but the y-axis increases as it goes down towards the bottom of the screen. Screen coordinates are demonstrated in figure 1-9.
-
-![Screen coordinates.](images/figure_1-9.png)
-*Figure 1-9. Screen coordinates.
-
-You can usually move the origin to any other location, which gives you access to the negative regions of the x- and y-axes. In figure 1-10, you can clearly see that this is the Cartesian coordinate system flipped upside down.
-
-![Screen coordinates, translated.](images/figure_1-10.png)
-*Figure 1-10. Screen coordinates, translated.
-
-Because of this, the direction of angles is also flipped in these systems, with angles increasing as they go around counter-clockwise. See figure 1-11.
-
-![Angles in screen coordinates.](images/figure_1-11.png)
-*Figure 1-11. Angles in screen coordinates.*
-
-Later, when I introduce some actual code, I'll show you how you can flip the screen coordinate system to make it act just like a standard Cartesian system.
-
-Note that this not absolutely the way things work for every single graphic programming environment you might work in. Make sure you know how the coordinate system works for the code base you are working in. For this book, I'll assume that the y-axis if flipped, as it is in HTML Canvas.
-
-### Radians
-
-When you start coding anything to do with angles, you'll find that the math libraries for most common programming languages do not use degrees. Instead, they measure angles in units called radians.
-
-To understand radians, let's go back to our circle. The distance from the center of the circle to any point on the perimeter of the circle is the circle's radius. For any angle, you can measure the length of the arc created by that angle. When that arc length is the same as the length of the radius, then we have an angle of one radian. That works out to just about 57.2958 degrees. You can see a radian in figure 1-12. It seems like a strange and rather arbitrary way to divide up a circle, but remember, so is 360.
-
-![One radian is the angle where the arc length equals the radius.](images/figure_1-12.png)
-*Figure 1-12. One radian is the angle where the arc length equals the radius.*
-
-And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter π. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
-
-Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28319. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 1-13.
-
-![A circle is 2PI radians.](images/figure_1-13.png) 
-*Figure 1-13. A circle is 2PI radians.*
-
-Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28319 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just about 6.28319.
-
-So PI radians is 180 degrees. PI/2 radians is 90 degrees PI/3 = 60. 2PI is 360 and so on. Once you get used to the new system of measurement, it's not so bad.
-
-### Converting between degrees and radians
-
-Often, you'll need to convert between these two systems of angular measurement. So it's useful to create a couple of functions that do this for you. Listing 1-1 is the first bit of code for the book.
-
-    function degreesToRadians(degrees) {
-      return degrees / 180 * Math.PI;
-    }
-
-    function radiansToDegrees(radians) {
-      return radians / Math.PI * 180;
-    }
+```
+JavaScript         C#                  Processing      Python              Go
+-----------------  ------------------  --------------  ------------------  -------------------
+Math.sin(angle)    Math.Sin(angle)     sin(angle)      math.sin(angle)     math.Sin(angle)
+Math.cos(angle)    Math.Cos(angle)     cos(angle)      math.cos(angle)     math.Cos(angle)
+Math.tan(angle)    Math.Tan(angle)     tan(angle)      math.tan(angle)     math.Tan(angle)
+Math.atan(ratio)   Math.Atan(ratio)    atan(angle)     math.atan(ratio)    math.Atan(angle)
+Math.atan2(y, x)   Math.Atan2(y, x)    atan2(angle)    math.atan2(y, x)    math.Atan2(angle)
+Math.sqrt(value)   Math.Sqrt(value)    sqrt(value)     math.sqrt(value)    math.Sqrt(angle)
+Math.PI            Math.PI             PI              math.pi             math.Pi
+```
 
 *Listing 1-1*
 
-You can mentally test this with a common angle like 90 degrees, which is PI/2 radians. Putting 90 as an argument to the first function, you get 90/180 or 1/2, times Math.PI equals PI/2.
+This isn't all of the functions by far, but you can see that for the most part, translating the math functions from JavaScript to some other language is, for the most part, trivial. Don't worry if you don't know what some (or any) of those functions are. They'll all be covered in the book.
 
-Or, putting PI/2 into the second function, you get (PI/2)/PI which works out to 1/2. Times 180 equals 90.
+## Boilerplate
 
-## Properties of Triangles
+Let's look at the HTML and JavaScript code that will be used throughout the book to create and run examples. The accompanying code for other languages will have different formats, but should have somewhat similar structures.
 
-There are a few properties of triangles that are interesting and useful. One is that if you add up the measurements of all three angles, you will always get exactly 180 degrees. (I'm going back to using degrees for this section.)
+Each project will contain two base files: `index.html` and `main.js`. The HTML file will create the canvas element, apply some minimal styling, and load the `main.js` file, as seen in listing 1-2.
 
-This property makes it easy to find an unknown angle if you happen to know the other two angles. Say you have a triangle where two angles are 60 degrees and 70 degrees. The total of those is 130 degrees, so you know the third angle must be 50 to equal 180 degrees total.
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style type="text/css">
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+        canvas {
+          display: block;
+        }
+        </style>
+      </head>
+      <body>
+        <canvas id="canvas"></canvas>
+        <script type="text/javascript" src="main.js"></script>
+      </body>
+    </html>
 
-Another useful thing to know is that the measurement of a given angle is proportional to the length of the opposite side.
+*Listing 1-2*
 
-In figure 1-14, let's assume that the lengths of sides `b` and `c` will not change. If you make angle `A` smaller, side `a` will be proportionately smaller. And as you increase the angle, the length of side `a` grows proportionately.
+Now the `main.js` file in listing 1-3.
 
-![As angle A increases, the length of side a increases.](images/figure_1-14.png) 
-*Figure 1-14. As angle A increases, the length of side a increases.*
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
 
-Now if you make angle `A` very close to 180 degrees, as I did in figure 1-15, then the other two angles must become very close to 0 degrees.
+    // sample drawing code:
+    for (let i = 0; i < 100; i++) {
+      context.lineTo(Math.random() * width, Math.random() * height);
+    }
+    context.stroke();
 
-![Angle A is very close to 180 degrees.](images/figure_1-15.png) 
-*Figure 1-15. Angle A is very close to 180 degrees.*
+*Listing 1-3*
 
-Let's go all the way and make angle `A` exactly 180 degrees. See figure 1-16.
+This gets a reference to the canvas element, and gets a reference to the 2d drawing context from the canvas. This context is what you'll use to issue all of your drawing commands.
 
-![Angle A is exactly 180 degrees.](images/figure_1-16.png) 
-*Figure 1-16. Angle A is exactly 180 degrees.*
+It sets the canvas size to the size of the browser content area using `window.innerWidth` and `window.innerHeight`, and also saves those values in the `width` and `height` variables for later use.
 
-This means the other two angles must be exactly 0 degrees. This no longer looks like a triangle at all, but mathematically, there's no problem. It still follows all the rules. Also notice that the length of side `a` is now exactly the same as the sum of sides `b` and `c`.
+That itself is all the boilerplate. Below that I included a few lines of sample drawing code. This just executes a `for` loop to draw 100 random lines on the canvas. Figure 1-3 shows the result.
 
-This brings us to a property relating to the sides of triangles. In most cases, the length of any one side will be less than the sum of the other two sides. At best, it will be equal to the sum of the other two sides.
+![Random lines.](images/figure_1-3.png)
+*Figure 1-3. Random lines.*
 
-These last two properties are not something you'll use directly very often, but it's often helpful to keep them in mind as you explore other concepts related to trigonometry.
+Note that the boilerplate does not include any page loading event listeners or callbacks, classes, or anything else fancy. Also notice that it does not require, include, or import any other external libraries. In more complex example, there will of course be some more complex code, but for the most part I'm going to keep things as bare-bones and simple as humanly possible. This is all in the interest of making the code as understandable and as portable as humanly possible.
 
-## Special Triangles
-
-I've covered most of what you need to know about triangles in general at this point. But there are a few special types of triangles that you should know about. They have special properties all of their own.
-
-### Equalateral Triangles
-
-The first special triangle is the equalateral triangle. See figure 1-17. In this case, all the angles have the same measurement, and all the sides have the same length. Because the sum of the angles must add up to 180 degrees, each angle must be 180/3 or 60 degrees. And so it is. It does not matter what lengths the sides are, but whatever they are, they are all equal to each other.
-
-![Equalateral triangle](images/figure_1-17.png) 
-*Figure 1-17. Equalateral triangle.*
-
-### Isosceles Triangles
-
-The next special triangle is the Isosceles triangle. See figure 1-18. In this case, two of the angles have the same measurement. Hence, two of the sides have the same length.
-
-![Isosceles triangle](images/figure_1-18.png) 
-*Figure 1-18. Isosceles triangle.*
-
-It's common to indicate equality by drawing one or more slashes through sides or the arcs in angles. Here, the single slash through sides `b` and `c` indicate that they are equal. And the double slash through the arcs of the two angles indicate that they have equal measurements. 
-
-### Acute and Obtuse Triangles
-
-Then we come to acute and obtuse triangles, as seen in figure 1-19. In terms of angles, obtuse means greater than 90 degrees, and acute means less than 90 degrees. An obtuse triangle is one in which one of the angles is more than 90 degrees. An acute triangle is where all three angles are less than 90 degrees.
-
-![Acute and obtuse triangles](images/figure_1-19.png)
-*Figure 1-19. Acute and obtuse triangles.*
-
-You might be wondering why I said just one angle in an obtuse triangle is greater than 90. Remember that the sum of the angles must add up to 180 degrees. If you had, say two angles that measured 91 degrees, the sum would already be 182 without even considering the third angle. So this is impossible. If you still have doubts, try to draw a triangle with two angles greater than 90 degrees.
-
-### Right Triangles
-
-And finally we come down to what will be the most important type of triangle in this book, the right triangle. See figure 1-20. A right triangle is where one of the angles is exactly 90 degrees. A right angle is an angle that measures exactly 90 degrees. We symbolize the right angle by drawing a small square in that corner, rather than the small arc.
-
-![Right triangle.](images/figure_1-20.png) 
-*Figure 1-20. Right triangle.*
-
-In some more casual situations where it is well established that you are working with right triangles and it is obvious which angle is 90 degrees, you might see the little square omitted. But I'll try to be diligent and include them in this book.
-
-Right triangles have a whole slew of interesting properties. Most of the rest of the book will be involved in exploring some of those different properties. But there are also a couple of new terms that go along with right triangles that I'll get out of the way right here and now.
-
-The two sides that are adjacent to the right angle are known as the legs of the right triangle.
-
-The side opposite the right angle is known as the hypotenuse. These are all shown in figure 1-21.
-
-![Sides and hypotenuse.](images/figure_1-21.png) 
-*Figure 1-21. Sides and hypotenuse.*
-
-There's also a slight change in some existing terminology. In most triangles, you can say that any angle has two adjacent sides. But in a right triangle, you normally don't refer to the hypotenuse as an adjacent side. It's just the hypotenuse.
-
-So, from angle `A`'s perspective, it has an opposite side (side `a`), and adjacent side (side `b`), and the hypotenuse. 
-
-From angle `B`'s perspective, its opposite side is side `b`, its adjacent side is side `a` and the hypotenuse is the same old hypotenuse.
-
-And from the right angle, you just refer to the adjacent sides as the legs and the opposite side as the hypotenuse.
-
-## Summary
-
-This chapter has mostly been about terminology and relationships. Although there's no code in this chapter, most of what is here is very important and will form the foundation of everything in the book. So if there is something you're not fully clear on, make sure you spend the time now to work it out so it doesn't bite you later on.
+TODO: outline of book
 
 \newpage
