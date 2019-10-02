@@ -1,6 +1,6 @@
-# Chapter 3 - Sine and Cosine
+# Chapter 4 - Sine and Cosine
 
-Chapter 2 covered the Pythagorean theorem, which is a special relationship between the three sides of a right triangle. Other than the fact of that one 90 degree angle, it's all about side lengths. As long as you have that right angle, the relationship of the sides holds true, no matter what the other angles are.
+Chapter 3 covered the Pythagorean theorem, which is a special relationship between the three sides of a right triangle. Other than the fact of that one 90 degree angle, it's all about side lengths. As long as you have that right angle, the relationship of the sides holds true, no matter what the other angles are.
 
 But now let's go into some more complex relationships. These are the relationships between a single angle of a right triangle and the ratio of two sides of its sides.
 
@@ -108,14 +108,12 @@ Of course we'll need the HTML file as described in the introduction. And this li
 ![Our first sine wave.](images/figure_4-9.png)<br/>
 *Figure 4-9. Our first sine wave.*
 
-But that looks upside down. Normally a sine wave starts at zero and goes UP to one and then back down through zero to negative one and back up to zero. Just remember that our y-axis screen coordinates are reversed from the Cartisian coordinates. If that matters, you can flip the coordinate system by using `scale` right after the `translate` as in listing 4-3.
+But that looks upside down. Normally a sine wave starts at zero and goes UP to one and then back down through zero to negative one and back up to zero. Just remember that our y-axis screen coordinates are reversed from the Cartisian coordinates. If that matters, you can flip the coordinate system by using `scale` right after the `translate` like so:
 
     ...
     context.translate(0, height / 2);
     context.scale(1, -1);
     ...
-
-*Listing 4-3*
 
 This scales everything by 1 on the x-axis, which changes nothing, and -1 on the y-axis, which has the effect of reversing it. Now it looks like a "normal" sine wave - see figure 4-10.
 
@@ -157,12 +155,12 @@ When you run this, you get the curve you see in figure 4-11.
 ![A cosine wave](images/figure_4-11.png)<br/>
 *Figure 4-11. A cosine wave.*
 
-And figure 4-12 shows a sine and cosie wave plotted together.
+And figure 4-12 shows a sine and cosine wave plotted together.
 
 ![Sine and cosine](images/figure_4-12.png)<br/>
 *Figure 4-12. Sine and cosine.*
 
-You can see that they are really the same curve, with the cosine wave shifteda little bit to the left. The value of cosine at zero degrees is the same as the sine of 90 degrees - one. And the cosine of 90 degrees is the same as the sine of 180 degrees - zero. And so on. So we say that these two curves are 90 degrees out of phase. In the next chapter we'll see how we can use both of these functions together to perform some very useful tasks. In the meantime, let's jump back to sine and learn a little more about that. Everything else about sine in this chapter can apply equally well to cosine.
+You can see that they are really the same curve, with the cosine wave shifted a little bit to the left. The value of cosine at zero degrees is the same as the sine of 90 degrees - one. And the cosine of 90 degrees is the same as the sine of 180 degrees - zero. And so on. So we say that these two curves are 90 degrees out of phase. In the next chapter we'll see how we can use both of these functions together to perform some very useful tasks. In the meantime, let's jump back to sine and learn a little more about that. Everything else about sine in this chapter can apply equally well to cosine.
 
 Going back to listing 4-2, try changing the value that multiply by to get `y` to something smaller, say 20:
 
@@ -190,6 +188,8 @@ So this value changes the height of the wave - how far it goes above and below t
       context.lineTo(x, y);
     }
     context.stroke();
+    
+*Listing 4-4*
 
 Now we are going from 0 to `Math.PI *10` radians, which is the equivalent of 360 * 5 degrees. This gives us five cycles of the sine wave. Because 360 degrees is the same as zero, when we go past 360, it's like we're beginning another cycle. So you can just keep increasing that angle and the sine wave will continue going up and down, at least until that angle number gets too big and the program can no longer store it.
 

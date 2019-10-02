@@ -1,4 +1,4 @@
-# Chapter 1 - Triangles
+# Chapter 2 - Triangles
 
 Let's start by finding our way around a triangle. First I'll go over all the parts of a triangle and their relationships. And then I'll cover a few basic definitions.
 

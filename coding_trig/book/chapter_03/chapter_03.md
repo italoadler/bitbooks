@@ -1,6 +1,6 @@
-# Chapter 2 - The Pythagorean Theorem
+# Chapter 3 - The Pythagorean Theorem
 
-In Chapter 1 you learned the different parts of a triangle and some of the basic relationships between those parts. But there are many more interesting and profound relationships there. Trigonometry is the study of those relationships. A large portion of trig is based on right triangles specifically. So for the rest of the book, unless I explicitly state otherwise, you can assume that I'm talking about right triangles.
+In Chapter 2 you learned the different parts of a triangle and some of the basic relationships between those parts. But there are many more interesting and profound relationships there. Trigonometry is the study of those relationships. A large portion of trig is based on right triangles specifically. So for the rest of the book, unless I explicitly state otherwise, you can assume that I'm talking about right triangles.
 
 In this chapter, we'll cover a relationship known as the Pythagorean Theorem. This has solely to do with the lengths of the sides of a right triangle. Beyond the fact that you know one of the angles is 90 degrees, angles are irrelevant for this theorem.
 
