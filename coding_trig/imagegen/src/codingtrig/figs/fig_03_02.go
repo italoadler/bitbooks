@@ -5,35 +5,34 @@ import (
 	"math"
 
 	"github.com/bit101/blgo"
-	"github.com/bit101/blgo/util"
 )
 
-func Fig_3_2() {
-	filename := "images/figure_3-2.png"
-	width := 1850.0
-	height := 700.0
+func Fig_2_2() {
+	filename := "images/figure_2-2.png"
+	width := 2000.0
+	height := 1300.0
 	surface := blgo.NewSurface(width, height)
 	surface.ClearRGB(1, 1, 1)
 	surface.SetLineWidth(4)
 	surface.SetFontSize(50)
+	surface.Translate(300, 50)
 
-	hyp := 500.0
-	angle := math.Pi / 6
-	w := math.Cos(angle) * hyp
-	h := math.Sin(angle) * hyp
-	trig.DrawRightTriangle(100, 550, w, h, surface)
-	surface.FillText("30°", 550, 550)
-	surface.FillText("3", 50, 400)
-	surface.FillText("6", 300, 380)
-	surface.FillText("sin 30° = 3 / 6 = 0.5", 150, 650)
+	trig.DrawRightTriangle(500, 800, 400, 400, surface)
+	surface.StrokeRectangle(500, 800, 400, 400)
+	surface.StrokeRectangle(100, 400, 400, 400)
+	surface.Save()
+	size := math.Hypot(400, 400)
+	surface.Translate(500, 400)
+	surface.Rotate(-math.Pi / 4)
+	surface.StrokeRectangle(0, 0, size, size)
+	surface.Restore()
 
-	trig.DrawRightTriangle(800, 550, w*2, h*2, surface)
-	surface.FillText("30°", 1700, 550)
-	surface.FillText("6", 750, 350)
-	surface.FillText("12", 1200, 250)
-	surface.FillText("sin 30° = 6 / 12 = 0.5", 850, 650)
+	surface.FillText("A", 480, 380)
+	surface.FillText("B", 920, 820)
+	surface.FillText("C", 430, 880)
 
-	surface.SetLineWidth(4)
+	surface.FillText("a", 680, 850)
+	surface.FillText("b", 440, 620)
+	surface.FillText("c", 740, 600)
 	surface.WriteToPNG(filename)
-	util.ViewImage(filename)
 }
