@@ -1,4 +1,4 @@
-# Introduction
+# Chapter 1 - Introduction
 
 Well, here you are, reading a book about trigonometry. There's a good chance you're grimacing somewhat - biting the bullet and hoping this won't be too bad. Trigonometry can be hard. People struggle with it. You might be thinking that this is a subject you need to get a better handle on, and if this book helps you a bit, it might be worth the pain.
 
