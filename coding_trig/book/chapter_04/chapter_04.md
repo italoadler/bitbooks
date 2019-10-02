@@ -69,7 +69,7 @@ But the real magic happens between 180 and 360 degrees, as you can see in figure
 
 Let's write some code to see this in action!
 
-For the first go, we'll just log out the results of the calculations. And at this point, you might as well start getting use to working in radians. The plan is simple. We'll create a `for` loop that goes from 0 to 2 PI in some increment, and just log the sine of that value. The code is in listing 4-1.
+For the first go, we'll just log out the results of the calculations. And at this point, you might as well start getting use to working in radians. The plan is simple. We'll create a `for` loop that goes from 0 to 2 π in some increment, and just log the sine of that value. The code is in listing 4-1.
 
     for (let i = 0; i <= Math.PI * 2; i += 0.2) {
       console.log(Math.sin(i));
@@ -79,12 +79,12 @@ For the first go, we'll just log out the results of the calculations. And at thi
 
 And figure 4-8 shows the output of that.
 
-![Sine values for 0 to 2 PI.](images/figure_4-8.png)<br/>
-*Figure 4-8. Sine values for 0 to 2 PI.*
+![Sine values for 0 to 2 π.](images/figure_4-8.png)<br/>
+*Figure 4-8. Sine values for 0 to 2 π.*
 
-You can see that we start at 0.0, go up very close to 1.0, back down past 0.0 into the negative realm, past -1.0 and back to almost 0.0. You might be wondering why you are not seeing exactly 1.0, -1.0 and 0.0 logged out there. That's because we're increasing the loop value by 0.2 on each iteration. We'll never hit exactly PI / 2 radians (90 degrees). We'll get close to it and then the next iteration will jump right past it. Likewise for the other values.
+You can see that we start at 0.0, go up very close to 1.0, back down past 0.0 into the negative realm, past -1.0 and back to almost 0.0. You might be wondering why you are not seeing exactly 1.0, -1.0 and 0.0 logged out there. That's because we're increasing the loop value by 0.2 on each iteration. We'll never hit exactly π / 2 radians (90 degrees). We'll get close to it and then the next iteration will jump right past it. Likewise for the other values.
 
-Now how about graphing this out? We know we have an input value that ranges from 0 to 2 PI (around 6.28) and an output value that ranges from -1 to +1. Let's multiply the input value by 100, which will give us values from 0 to around 628. And the same for the output values which will give us -100 to +100. We can then plot the values on the screen and see what that gives us. Check listing 4-2 for the code.
+Now how about graphing this out? We know we have an input value that ranges from 0 to 2π (around 6.28) and an output value that ranges from -1 to +1. Let's multiply the input value by 100, which will give us values from 0 to around 628. And the same for the output values which will give us -100 to +100. We can then plot the values on the screen and see what that gives us. Check listing 4-2 for the code.
     
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");

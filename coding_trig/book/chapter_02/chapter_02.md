@@ -84,16 +84,16 @@ To understand radians, let's go back to our circle. The distance from the center
 ![One radian is the angle where the arc length equals the radius.](images/figure_2-12.png)
 *Figure 2-12. One radian is the angle where the arc length equals the radius.*
 
-And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter π. This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. PI is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
+And radians have some neat and useful properties as well. Hopefully you are familiar with the concept of PI, represented by the Greek letter π. (I'll use the symbol π hereafter.) This is the ratio of the diameter of a circle to its circumference. It works out to about 3.14159. π is actually an irrational number, meaning that the digits will go on infinitely, but here I'll be rounding everything off to understandable lengths. This means that the distance around a circle is about 3.14159 times the distance across it.
 
-Now say we have a radius of one. That means the diameter is two. And the circumference is two times PI, or very roughly 6.28319. From there, you can work out that the angular measurement of a circle is 2PI radians. You can confirm this visually by marking out each radian, as I did in figure 2-13.
+Now say we have a radius of one. That means the diameter is two. And the circumference is two times π, or very roughly 6.28319. From there, you can work out that the angular measurement of a circle is 2π radians. You can confirm this visually by marking out each radian, as I did in figure 2-13.
 
-![A circle is 2PI radians.](images/figure_2-13.png) 
-*Figure 2-13. A circle is 2PI radians.*
+![A circle is 2π radians.](images/figure_2-13.png) 
+*Figure 2-13. A circle is 2π radians.*
 
 Three radians gets us just shy of a half circle, and it's just over six radians for a full circle. In fact it's roughly 6.28319 radians. Or we could work it out mathematically from degrees. 360 degrees divided by 57.2958 degrees (one radian) equals just about 6.28319.
 
-So PI radians is 180 degrees. PI/2 radians is 90 degrees PI/3 = 60. 2PI is 360 and so on. Once you get used to the new system of measurement, it's not so bad.
+So π radians is 180 degrees. π/2 radians is 90 degrees π/3 = 60. 2π is 360 and so on. Once you get used to the new system of measurement, it's not so bad.
 
 ### Converting between degrees and radians
 
@@ -109,9 +109,9 @@ Often, you'll need to convert between these two systems of angular measurement. 
 
 *Listing 2-1*
 
-You can mentally test this with a common angle like 90 degrees, which is PI/2 radians. Putting 90 as an argument to the first function, you get 90/180 or 1/2, times Math.PI equals PI/2.
+You can mentally test this with a common angle like 90 degrees, which is π/2 radians. Putting 90 as an argument to the first function, you get 90/180 or 1/2, times π equals π/2.
 
-Or, putting PI/2 into the second function, you get (PI/2)/PI which works out to 1/2. Times 180 equals 90.
+Or, putting π/2 into the second function, you get (π/2)/π which works out to 1/2. Times 180 equals 90.
 
 ## Properties of Triangles
 

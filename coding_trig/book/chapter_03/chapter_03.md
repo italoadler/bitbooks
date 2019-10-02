@@ -77,7 +77,7 @@ Now that `render` function. To start with, this will clear the canvas and draw a
 
 *Listing 3-3*
 
-In the canvas drawing API, circles are drawn by calling `beginPath`, then drawing an arc, then calling `fill` or `stroke`. The `arc` method takes the `x`, `y` position of the center of the circle, the radius of the circle, and the start and end angles to draw the arc, in radians. To draw a full circle, go from 0 radians to PI * 2 radians (360 degrees).
+In the canvas drawing API, circles are drawn by calling `beginPath`, then drawing an arc, then calling `fill` or `stroke`. The `arc` method takes the `x`, `y` position of the center of the circle, the radius of the circle, and the start and end angles to draw the arc, in radians. To draw a full circle, go from 0 radians to π * 2 radians (360 degrees).
 
 You can test this now by loading index.html in any modern browser. Click once on the canvas and a point will be drawn where you clicked. Click again, another point. Click a third time, and they both go away. Keep clicking to create more pairs of points.
 
