@@ -155,7 +155,7 @@ When you run this, you get the curve you see in figure 4-11.
 ![A cosine wave](images/figure_4-11.png)<br/>
 *Figure 4-11. A cosine wave.*
 
-And figure 4-12 shows a sine and cosie wave plotted together.
+And figure 4-12 shows a sine and cosine wave plotted together.
 
 ![Sine and cosine](images/figure_4-12.png)<br/>
 *Figure 4-12. Sine and cosine.*
