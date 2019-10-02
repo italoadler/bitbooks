@@ -43,6 +43,8 @@ So these values hold true for any angle. When I was a kid, our math textbooks ha
 ![A trigonometry table.](images/figure_4-3.jpg)<br/>
 *Figure 4-3. A trigonometry table from an old textbook. (ref: https://archive.org/details/planetrigonometr00robb/page/74)*
 
+## Sine through a full 360 degrees
+
 Sticking with sine for a bit, let's see what happens to the values of sine when an angle increases. And let's continue to use degrees and Cartesian coordinates for the time being.
 
 We'll arrange the triangle so that angle A is at the origin (0, 0) and the angle will increase as it goes counter-clockwise. In figure 4-4, angle A is very small, close to zero. So the length of the opposite side is also close to zero. Thus the ratio of the opposite side and the hypotenuse will also be close to zero.
@@ -66,6 +68,8 @@ But the real magic happens between 180 and 360 degrees, as you can see in figure
 
 ![Angles between 180 and 360 degrees.](images/figure_4-7.png)
 *Figure 4-7. Angles between 180 and 360 degrees.*
+
+## Write some code!
 
 Let's write some code to see this in action!
 
@@ -130,6 +134,8 @@ Or instead just use `-y` in the next line:
 
 In general, the only time I would scale by -1 is if I were creating some kind of math application that had to plot things in Cartesian coordinates. Otherwise, I'd just use values that create the effects I need to create.
 
+## Cosine
+
 Let's take a quick look at the cosine function. We can re-use most of the same code and just switch `Math.cos` for `Math.sin`. You can see this in listing 4-3.
 
     const canvas = document.getElementById("canvas");
@@ -161,6 +167,8 @@ And figure 4-12 shows a sine and cosine wave plotted together.
 *Figure 4-12. Sine and cosine.*
 
 You can see that they are really the same curve, with the cosine wave shifted a little bit to the left. The value of cosine at zero degrees is the same as the sine of 90 degrees - one. And the cosine of 90 degrees is the same as the sine of 180 degrees - zero. And so on. So we say that these two curves are 90 degrees out of phase. In the next chapter we'll see how we can use both of these functions together to perform some very useful tasks. In the meantime, let's jump back to sine and learn a little more about that. Everything else about sine in this chapter can apply equally well to cosine.
+
+## Wave height and wavelength
 
 Going back to listing 4-2, try changing the value that multiply by to get `y` to something smaller, say 20:
 
@@ -196,3 +204,7 @@ Now we are going from 0 to `Math.PI *10` radians, which is the equivalent of 360
 Also by changing the multiplier we use to get `x`, we get more cycles in a smaller horizontal space. So we have increased the frequency. And since each wave is shorter, we can also say that we have reduced the wavelength.
 
 Try playing around with all these values and see how each change affects the shape of the curve that's created.
+
+## Summary
+
+We've covered the three basic trigonometric functions - sine, cosine and tangent, where they come from, and how to use sine and cosine in code. In a later chapter, we'll get more into tangent, as it works quite a bit differently and has very different uses. Coming up in chapter 5, we'll look at some real world uses for sine and cosine in a variety of small projects.
