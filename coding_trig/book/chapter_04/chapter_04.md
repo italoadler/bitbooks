@@ -217,7 +217,7 @@ So this value changes the height of the wave - how far it goes above and below t
 
 *Listing 4-4*
 
-![Changing the wavelength.](images/figure_4-14png)<br/>
+![Changing the wavelength.](images/figure_4-14.png)<br/>
 *Figure 4-14. Changing the wavelength.*
 
 Now we are going from 0 to `Math.PI * 10` radians, which is the equivalent of 360 * 5 degrees. This gives us five cycles of the sine wave. Because 360 degrees is the same as zero, when we go past 360, it's like we're beginning another cycle. So you can just keep increasing that angle and the sine wave will continue going up and down, at least until that angle number gets too big and the program can no longer store it.
