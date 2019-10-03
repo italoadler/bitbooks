@@ -88,7 +88,7 @@ And figure 4-8 shows the output of that.
 
 You can see that we start at 0.0, go up very close to 1.0, back down past 0.0 into the negative realm, past -1.0 and back to almost 0.0. You might be wondering why you are not seeing exactly 1.0, -1.0 and 0.0 logged out there. That's because we're increasing the loop value by 0.2 on each iteration. We'll never hit exactly π / 2 radians (90 degrees). We'll get close to it and then the next iteration will jump right past it. Likewise for the other values.
 
-Now how about graphing this out? We know we have an input value that ranges from 0 to 2π (around 6.28) and an output value that ranges from -1 to +1. Let's multiply the input value by 100, which will give us values from 0 to around 628. And the same for the output values which will give us -100 to +100. We can then plot the values on the screen and see what that gives us. Check listing 4-2 for the code.
+Now how about graphing this out? We know we have an input value that ranges from 0 to 2π (around 6.28) and an output value that ranges from -1 to +1. Let's multiply the input value by 100, which will give us values from 0 to around 628. And let's multiply the output by 200 for values which will give us -200 to +200. We can then plot the values on the screen and see what that gives us. Check listing 4-2 for the code.
     
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
@@ -100,14 +100,20 @@ Now how about graphing this out? We know we have an input value that ranges from
     context.beginPath();
     for (let i = 0; i <= Math.PI * 2; i += 0.2) {
       let x = i * 100;
-      let y = Math.sin(i) * 100;
+      let y = Math.sin(i) * 200;
       context.lineTo(x, y);
     }
     context.stroke();
 
+    // draw the y-axis
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(width, 0);
+    context.stroke();
+
 *Listing 4-2*
 
-Of course we'll need the HTML file as described in the introduction. And this listing has the lines that get a reference to the canvas its context and set its size. Then we need to translate the canvas down by `height / 2`. That puts the 0 position of the y-axis in the center of the screen. Then we just get the `x` and `y` by multiplying the input and output by 100 and executing a `lineTo` to that point and finally stroking that path. You can see the output in figure 4-9.
+Of course we'll need the HTML file as described in the introduction. And this listing has the lines that get a reference to the canvas its context and set its size. Then we need to translate the canvas down by `height / 2`. That puts the 0 position of the y-axis in the center of the screen. Then we just get the `x` and `y` by multiplying the input and output by 100 and executing a `lineTo` to that point and then stroking that path. The last few lines just draw a line to represent the y-axis. You can see the output in figure 4-9.
 
 ![Our first sine wave.](images/figure_4-9.png)<br/>
 *Figure 4-9. Our first sine wave.*
@@ -126,7 +132,7 @@ This scales everything by 1 on the x-axis, which changes nothing, and -1 on the 
 
 Note that you don't have to to the scaling trick. There are other ways of achieving the same thing. For example, you could change the line that sets the value of `y` to:
 
-    let y = -Math.sin(i) * 100;
+    let y = -Math.sin(i) * 200;
 
 Or instead just use `-y` in the next line:
 
@@ -149,9 +155,15 @@ Let's take a quick look at the cosine function. We can re-use most of the same c
     context.beginPath();
     for (let i = 0; i <= Math.PI * 2; i += 0.2) {
       let x = i * 100;
-      let y = Math.cos(i) * 100;
+      let y = Math.cos(i) * 200;
       context.lineTo(x, y);
     }
+    context.stroke();
+
+    // draw the y-axis
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(width, 0);
     context.stroke();
 
 *Listing 4-3*
@@ -197,9 +209,18 @@ So this value changes the height of the wave - how far it goes above and below t
     }
     context.stroke();
     
+    // draw the y-axis
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(width, 0);
+    context.stroke();
+
 *Listing 4-4*
 
-Now we are going from 0 to `Math.PI *10` radians, which is the equivalent of 360 * 5 degrees. This gives us five cycles of the sine wave. Because 360 degrees is the same as zero, when we go past 360, it's like we're beginning another cycle. So you can just keep increasing that angle and the sine wave will continue going up and down, at least until that angle number gets too big and the program can no longer store it.
+![Changing the wavelength.](images/figure_4-14png)<br/>
+*Figure 4-14. Changing the wavelength.*
+
+Now we are going from 0 to `Math.PI * 10` radians, which is the equivalent of 360 * 5 degrees. This gives us five cycles of the sine wave. Because 360 degrees is the same as zero, when we go past 360, it's like we're beginning another cycle. So you can just keep increasing that angle and the sine wave will continue going up and down, at least until that angle number gets too big and the program can no longer store it.
 
 Also by changing the multiplier we use to get `x`, we get more cycles in a smaller horizontal space. So we have increased the frequency. And since each wave is shorter, we can also say that we have reduced the wavelength.
 
