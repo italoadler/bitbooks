@@ -108,7 +108,11 @@ In listing 5-3, we have another type of oscillation.
 
 In HTML's canvas, the `globalAlpha` property sets the opacity of anything drawn on the canvas thereafter. A value of 0.0 would be fully transparent, while 1.0 would be fully opaque. We're setting it to 0.5 + the sine of `angle`, time 0.5, which makes it oscillate between 0.0 and 1.0, causing the circle to fade in and out of existence.
 
-You might see a useful pattern emerging here when creating oscillating properties with sine. You choose the center point that you want the value to go back and forth around, and how much you want the value to vary from that center. The final value is the center, plus the sine times that variance.
+You might see a useful pattern emerging here when creating oscillating properties with sine. You choose a base value that you want the final value to oscillate around, and a range of how much you want the final value to vary from that base. The final value is the center, plus the sine times that variance. Stated as a formula:
+
+    final = base + sin(angle) * rangle
+
+And the speed of the oscillation is dependent on how much you increment the angle on each frame.
 
 Listing 5-4 shows yet another example, this time by rotating an object.
 
@@ -149,9 +153,15 @@ Here, the key line is:
 
       let rotation = 0 + Math.sin(angle) * Math.PI / 2;
 
-Here we are determining an angle to rotate the object by. Going back to the pattern I just mentioned, the center would be 0 and we want it to vary by π/2 in either direction. Remember that π/2 radians equals 90 degrees. So the object will rotate back and forth from -90 to +90. Of course, in this case you really don't need the 0 in that line. I just left it in so you can see how it still follows the pattern.
+Here we are determining an angle to rotate the object by. Going back to the pattern I just mentioned, the base would be 0 and we want it to vary by π/2 in either direction. Remember that π/2 radians equals 90 degrees. So the object will rotate back and forth from -90 to +90. Of course, in this case you really don't need the 0 in that line. I left it in so you can see how it still follows the pattern. But normally I would just write it as:
 
-After determining the rotation angle, I do a bit of tricky code to perform the rotation itself. First, I save the current state of the canvas's drawing context. I then translate to the x, y position I want the object appear at and then perform the rotation. This ensures that the rotation is done around that x, y point, so the object is rotating around the center of the canvas in this case. And here, I'm drawing a 200x200 square instead of a circle, but cause it would be pretty tough to determine whether or not a solid colored circle was rotating. Finally, I restore the context's state, which undoes the translation and rotation so it's all set for the next frame.
+      let rotation = Math.sin(angle) * Math.PI / 2;
+
+After determining the rotation angle, I do a bit of tricky code to perform the rotation itself. First, I save the current state of the canvas's drawing context. This is so I can revert to that saved state when I'm done drawing the current frame.
+
+I then translate to the x, y position that I want to be the center of the rotation. In this case, it's the center of the canvas. This time I'm drawing a 200x200 square instead of a circle, because it's hard to see a circle rotate. I specify the x, y position of the square as -100, -100, which is half of its width and height. This puts the center of the square at the center of the canvas.
+
+Finally, I restore the context's state, which undoes the translation and rotation so it's in a fresh state for the next frame.
 
 The final oscillation example gets a bit more complex. The code is in listing 5-5.
 
@@ -185,9 +195,52 @@ The final oscillation example gets a bit more complex. The code is in listing 5-
 
 *Listing 5-5*
 
-Here, we return to something pretty close to what we saw in listing 5-1. But instead of just a single `angle` and `speed` variable, we have one each for both the x- and y-axes. And each speed value is set to be a random number from 0.0 to 0.1. Then we calculate `x` as the horizontal center, plus the sine of `angleX`, times `width * 0.4`. And use a similar pattern for `y` using `angleY` and `height`. Then we add the corresponding speed values to each angle value. The result is that the object simultaneously loops back and forth AND up and down, both at random speeds. Each time you refresh, you get a new, wild looping, which at first seems unpredictable, but if you watch it for a few seconds, has a definite pattern.
+Here, we return to something pretty close to what we saw in listing 5-1. But instead of just a single `angle` and `speed` variable, we have one each for both the x- and y-axes. And each speed value is set to be a random number from 0.0 to 0.1. Then we calculate `x` as the horizontal center, plus the sine of `angleX`, times `width * 0.4`. You should recognize that pattern by now. And the same pattern goes for `y` using `angleY` and `height`. Then we add the corresponding speed values to each angle value. The result is that the object simultaneously loops back and forth AND up and down, both at random speeds. Each time you refresh the page, you get a new, wild looping motion. Depending on the random values that get used, the animation may follow a very predictable path, or might at first seem totally chaotic.
 
-This kind of two-axis, independant looping forms what is called a Lissajous curve. It's beyond the scope of this book, but can be both beautiful and very useful.
-![something](images/figure_5-1.png)
-*Figure 5-1. Something.*
+This kind of two-axis, independant looping forms what is called a Lissajous curve. It's beyond the scope of this book, but can be both beautiful and very useful. If, instead of animating an object through one of these curves, you used the same code to trace out the path of that curve, you would get a shape something like you see in figure 5-1.
 
+![Lissajous curve.](images/figure_5-1.png)
+*Figure 5-1. Lissajous curve.*
+
+And the code for this example is in listing 5-6.
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    let angleX = 0;
+    let angleY = 0;
+    let speedX = Math.random() * 0.1;
+    let speedY = Math.random() * 0.1;
+
+    render();
+
+    function render() {
+      context.beginPath();
+
+      for (let i = 0; i < 10000; i++) {
+        let x = width / 2 + Math.sin(angleX) * width * 0.4;
+        let y = height / 2 + Math.sin(angleY) * height * 0.4;
+
+        angleX += speedX;
+        angleY += speedY;
+
+        context.lineTo(x, y);
+      }
+
+      context.stroke();
+    }
+
+*Listing 5-6*
+
+## Circles and Ellipses
+
+In figure 5-2, I've arranged several right triangles with a common point on the origin. As the angle of each triangle changes and the hypotenuse remains constant, you can see that the other non-ninety-degree angle traces out a cirle.
+
+![Lissajous curve.](images/figure_5-1.png)
+*Figure 5-1. Lissajous curve.*
+
+This makes sense when you consider that one definition of a circle is the set of points that are all at an equal distance from a center point. The hypotenuse becomes the radius of the circle, and at any given angle, it defines a point on the circle.
+
+Understanding this, we can use trigonometry to draw circles.
