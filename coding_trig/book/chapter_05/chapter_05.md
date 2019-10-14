@@ -494,3 +494,12 @@ This is almost identical to listing 5-7. I define variables for `rx` and `ry` (s
 ![An ellipse](images/figure_5-9.png)
 *Figure 5-9. An ellipse.*
 
+Try changing the values for `rx` and `ry` and seeing the different ellipses you can create.
+
+Maybe you want to try to make your own reusable function that draws an ellipse.
+
+And I suggest trying the other things we've done in this chapter, but do them using ellipses. Arrange a bunch of objects around an ellipse or make something animate around an elliptical path.
+
+## Summary
+
+In this chapter, we've gone over some common and super useful techniques that make use of sine and cosine. Hopefully the visual aspect of all of these examples has given you a pretty good feel for how sine and cosine work. If you have any uncertainty, now is the time to go back through these examples and experiment with them and try to fully understand how they work and why they produce the effects they produce. The rest of the book will build on these principles.
