@@ -1,21 +1,25 @@
 package figs
 
 import (
-	"codingtrig/trig"
+	"math"
 
 	"github.com/bit101/blgo"
+	"github.com/bit101/blgo/random"
 	"github.com/bit101/blgo/util"
 )
 
-// Fig0404 blah
-func Fig0404() {
-	filename := "images/figure_4-4.png"
+func Fig_5_8() {
+	filename := "images/figure_5-8.png"
 	width := 2000.0
 	height := 1000.0
 	surface := blgo.NewSurface(width, height)
 	surface.ClearRGB(1, 1, 1)
 
+	rx := 500.0
+	ry := 300.0
+
 	surface.Translate(width/2, height/2)
+	surface.Scale(1, -1)
 
 	surface.SetDash([]float64{10, 0}, 1, 0)
 
@@ -29,8 +33,10 @@ func Fig0404() {
 	surface.SetLineWidth(4)
 	surface.SetFontSize(50)
 
-	trig.DrawRightTriangle(500, 0, -500, 100, surface)
+	surface.SetLineWidth(2)
+	surface.StrokeEllipse(0, 0, rx, ry)
 
 	surface.WriteToPNG(filename)
 	util.ViewImage(filename)
 }
+

@@ -234,7 +234,7 @@ And the code for this example is in listing 5-6.
 
 *Listing 5-6*
 
-## Circles and Ellipses
+## Drawing Circles
 
 In figure 5-2, I've arranged several right triangles with a common point on the origin. As the angle of each triangle changes and the hypotenuse remains constant, you can see that the far end of the hypotenuse traces out a circle.
 
@@ -334,6 +334,8 @@ You might be wondering about that arbitrary, hard-coded 0.1 value in the for loo
 
 Because 2π divided by 0.5 is about 12.56, we wind up with 13 line segments, one of them about half the length of the others. Using 0.1 to increment gives us almost 63 segments, which renders fairly smoothly at the size circles we've drawn so far. If you start drawing larger circles, you may have to increase the resolution by making that increment value even smaller. Making it too small to begin with means you'll be drawing more line segments than a viewer would ever be able to see. Your program could start to slow down while adding no perceivable increase in rendering quality.
 
+## Arranging objects in a circle
+
 We can use a very similar strategy to arrange a number of objects around a circle. There are two main differences. First, obviously, instead of drawing line segments, we draw an object at each x, y position. Second, instead of specifying an arbitrary increment value in the for loop, we need to know how many objects we want to draw and divide the circle by that value to get the increment. For example, if we wanted to arrange 10 objects around a circle, that would be 360 degrees divided by 10, so we'd place an object every 36 degrees. You can see this in action in listing 5-9:
 
 
@@ -422,4 +424,73 @@ I'll admit that for this example, you could achieve the same effect with only ro
 
 At any rate, it's good to go through this exercise and fully understand how the trigonometry works. This allows you to create almost any effect you want.
 
+## Moving in a circle
+
+Knowing what we now know, we can easily start to animate objects in a circular path. This takes some of the ideas in the first examples in this chapter (oscillation) and combines them with the arranging-in-a-circle example. Instead of drawing all the objects around the circle at one time, we just draw them one at a time, one per frame of animation. The concept is simple, so we can jump right into the code, as seen in listing 5-11:
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    let dist = 300;
+    let speed = 0.05;
+    let angle = 0;
+
+    render();
+
+    function render() {
+      context.clearRect(0, 0, width, height);
+      let x = Math.cos(angle) * dist;
+      let y = Math.sin(angle) * dist;
+      context.beginPath();
+      context.arc(width / 2 + x, height / 2 + y, 20, 0, Math.PI * 2);
+      context.fill();
+      angle += speed;
+      requestAnimationFrame(render);
+    }
+
+*Listing 5-11*
+
+The main difference here is that we're specifying an `angle` variable that starts at 0, and a speed variable, that is set to 0.05. We call the `render` function, which clears the canvas, calculates an x, y position and draws a circle there (offset by half the width and height of the canvas). Then it adds the speed to the angle and calls `requestAnimationFrame` to ensure that `render` is called repeatedly.
+
+In this case, I chose not to use a transform to offset the position of the object that's being drawn, as that adds complexity to the `clearRect` function. Instead I just calculated the offset by adding `width / 2` and `height / 2` in the call to `arc`. As usual, there are always multiple ways of accomplishing a task, and you can use whichever one makes sense for the project at hand.
+
+Try changing the distance, which will alter the size of the circle, and the speed, which quite obviously changes the speed of the animation. Try setting `speed` to a negative number. What do you think will happen?
+
+## Ellipses
+
+Drawing an ellipse is nearly identical to drawing a circle. In a circle, you have a single radius that defines the points that make up the circle. There is more than one way to define an ellipse, but one way is considering the major and minor axes. These are the distances from the center of the ellipse to the furthest extents of the ellipse on the x and y axis. See figure 5-8.
+
+![Major and minor axes of an ellipse.](images/figure_5-8.png)
+*Figure 5-8. Major and minor axes of an ellipse.*
+
+Actually, a circle is an ellipse where the major and minor axes happen to be the same and are equal to the radius of the circle. In most ellipses they are different. Drawing an ellipse with line segments like we did earlier in the chapter is surprisingly easy. Just use the major and minor axis values instead of the single radius. Personally, I just think of these as the "x radius" and "y radius". But I'm sure any serious mathematician would probably punch me if they heard me saying that in public. But it always made good sense to me. So hopefully you'll forgive me here.
+
+Check out the code in listing 5-12:
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    context.translate(width / 2, height / 2);
+
+    let rx = 400;
+    let ry = 200;
+    context.beginPath();
+    for (let i = 0; i < Math.PI * 2; i += 0.1) {
+      let x = Math.cos(i) * rx;
+      let y = Math.sin(i) * ry;
+      context.lineTo(x, y);
+    }
+    context.closePath();
+    context.stroke();
+
+*Listing 5-12*
+
+This is almost identical to listing 5-7. I define variables for `rx` and `ry` (shhhh...) and just use those in place of `radius`, using `rx` for the x-axis and `ry` for the y-axis. Simple. The output is in figure 5-9.
+
+![An ellipse](images/figure_5-9.png)
+*Figure 5-9. An ellipse.*
 

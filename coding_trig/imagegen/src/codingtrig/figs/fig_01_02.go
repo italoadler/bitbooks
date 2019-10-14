@@ -7,7 +7,8 @@ import (
 	"github.com/bit101/blgo"
 )
 
-func Fig_1_2() {
+// Fig0102 blah
+func Fig0102() {
 	filename := "images/figure_1-2.png"
 	width := 2000.0
 	height := 900.0

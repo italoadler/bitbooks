@@ -6,7 +6,8 @@ import (
 	"github.com/bit101/blgo"
 )
 
-func Fig_2_10() {
+// Fig0210 blah
+func Fig0210() {
 	filename := "images/figure_2-10.png"
 	width := 2000.0
 	height := 900.0
@@ -30,7 +31,7 @@ func Fig_2_10() {
 			c := fmt.Sprintf("%d", i)
 			surface.FillText(c, x-surface.TextExtents(c).Width/2, -15)
 		}
-		i += 1
+		i++
 	}
 	i = -4
 	for y := -400.0; y <= 400.0; y += 100 {
@@ -41,7 +42,7 @@ func Fig_2_10() {
 			c := fmt.Sprintf("%d", i)
 			surface.FillText(c, 15, y+surface.TextExtents(c).Height/2)
 		}
-		i += 1
+		i++
 	}
 	surface.FillText("0", 10, -15)
 
