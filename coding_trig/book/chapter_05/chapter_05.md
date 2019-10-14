@@ -329,9 +329,97 @@ Here I've defined a `circle` function. This takes the context you want to draw o
 
 You might be wondering about that arbitrary, hard-coded 0.1 value in the for loop that increments the angle. That's just a number I chose. If you were to choose a higher number, say 0.5, you'd get what you see in figure 5-5.
 
-![A chunky circle.](images/figure_5-4.png)
+![A chunky circle.](images/figure_5-5.png)
 *Figure 5-5. A chunky circle.*
 
 Because 2π divided by 0.5 is about 12.56, we wind up with 13 line segments, one of them about half the length of the others. Using 0.1 to increment gives us almost 63 segments, which renders fairly smoothly at the size circles we've drawn so far. If you start drawing larger circles, you may have to increase the resolution by making that increment value even smaller. Making it too small to begin with means you'll be drawing more line segments than a viewer would ever be able to see. Your program could start to slow down while adding no perceivable increase in rendering quality.
+
+We can use a very similar strategy to arrange a number of objects around a circle. There are two main differences. First, obviously, instead of drawing line segments, we draw an object at each x, y position. Second, instead of specifying an arbitrary increment value in the for loop, we need to know how many objects we want to draw and divide the circle by that value to get the increment. For example, if we wanted to arrange 10 objects around a circle, that would be 360 degrees divided by 10, so we'd place an object every 36 degrees. You can see this in action in listing 5-9:
+
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    context.translate(width / 2, height / 2);
+
+    let num = 20;
+    let dist = 200;
+    let inc = Math.PI * 2 / num;
+
+    for (let i = 0; i < Math.PI * 2; i += inc) {
+      let x = Math.cos(i) * dist;
+      let y = Math.sin(i) * dist;
+      context.beginPath();
+      context.arc(x, y, 20, 0, Math.PI * 2);
+      context.stroke();
+    }
+
+    num = 30;
+    dist = 300;
+    for (let i = 0; i < Math.PI * 2; i += inc) {
+      let x = Math.cos(i) * dist;
+      let y = Math.sin(i) * dist;
+      context.beginPath();
+      context.rect(x - 20, y - 20, 40, 40);
+      context.stroke();
+    }
+
+*Listing 5-9*
+
+First I've centered the canvas using `translate`. If you wanted to make this a reusable function, you could change this to accept a center position instead. Then I've defined two variables - `num` for the number of objects to draw, and `dist` to specify how far away from the center to draw them. A third value, `inc` is the increment amount, found by dividing a full circle, by the number of objects.
+
+The first for loop increments by that `inc` amount, finds the x, y position for each object and just draws a circle there, using the `arc` method.
+
+Then I change the `num` and `dist` values and do the same thing, drawing 30 squares a bit further out. You can see the result in figure 5-6.
+
+![Objects arranged in a circle](images/figure_5-6.png)
+*Figure 5-6. Objects arranged in a circle.*
+
+Note that within that for loop, you have the current angle from the center point. If you apply a rotation transformation before drawing, the object you draw will be oriented to align with that angle. This is easier to see than explain. You can see the code in listing 5-10:
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    context.translate(width / 2, height / 2);
+
+    let num = 26;
+    let dist = 200;
+    let inc = Math.PI * 2 / num;
+
+    context.font = "40px Arial";
+
+    for (let i = 0; i < Math.PI * 2; i += inc) {
+      let x = Math.cos(i) * dist;
+      let y = Math.sin(i) * dist;
+      context.save();
+      context.translate(x, y);
+      context.rotate(i);
+      context.fillText("Hello, world", 0, 0);
+      context.restore();
+    }
+
+*Listing 5-10*
+
+Like before, we first get the x, y position to draw the object. Then we save the state of the context, translate to that x, y position and rotate by the value in `i`, which is the current angle around the circle. We draw a string of text at location 0, 0, which is now the translated and rotated origin, and finally restore the context back to what it was. This produced what you see in figure 5-7. 
+
+![Text arranged in a circle](images/figure_5-7.png)
+*Figure 5-7. Text arranged in a circle.*
+
+I'll admit that for this example, you could achieve the same effect with only rotation, doing away with trigonometry altogether. Just change the for loop slightly like you see in listing 5-10.1.
+
+    for (let i = 0; i < Math.PI * 2; i += inc) {
+      context.save();
+      context.rotate(i);
+      context.fillText("Hello, world", dist, 0);
+      context.restore();
+    }
+
+*Listing 5-10.1*
+
+At any rate, it's good to go through this exercise and fully understand how the trigonometry works. This allows you to create almost any effect you want.
 
 
