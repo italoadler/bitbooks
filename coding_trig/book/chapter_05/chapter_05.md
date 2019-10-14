@@ -460,12 +460,14 @@ Try changing the distance, which will alter the size of the circle, and the spee
 
 ## Ellipses
 
-Drawing an ellipse is nearly identical to drawing a circle. In a circle, you have a single radius that defines the points that make up the circle. There is more than one way to define an ellipse, but one way is considering the major and minor axes. These are the distances from the center of the ellipse to the furthest extents of the ellipse on the x and y axis. See figure 5-8.
+Drawing an ellipse is nearly identical to drawing a circle. In a circle, you have a single radius that defines the points that make up the circle. There is more than one way to define an ellipse, but one way is considering the major and minor axes. These are the overall width and height of the ellipse (assuming it is aligned with the x- and y-axes). See figure 5-8.
 
 ![Major and minor axes of an ellipse.](images/figure_5-8.png)
 *Figure 5-8. Major and minor axes of an ellipse.*
 
-Actually, a circle is an ellipse where the major and minor axes happen to be the same and are equal to the radius of the circle. In most ellipses they are different. Drawing an ellipse with line segments like we did earlier in the chapter is surprisingly easy. Just use the major and minor axis values instead of the single radius. Personally, I just think of these as the "x radius" and "y radius". But I'm sure any serious mathematician would probably punch me if they heard me saying that in public. But it always made good sense to me. So hopefully you'll forgive me here.
+Actually, a circle is an ellipse where the major and minor axes happen to be the same and are equal to the diameter of the circle. In most ellipses they are different. Drawing an ellipse with line segments like we did earlier in the chapter is surprisingly easy. Just use half of the major and minor axis values instead of the radius when calculating a point on the ellipse. For example, if the ellipse was 10 units wide and 6 units high, you'd use the cosine of the current angle times 5 to get the x value of that point, and the sine of the angle times 3 to get the y value.
+
+Personally, I just think of these as the "x radius" and "y radius". But I'm sure any serious mathematician would probably punch me if they heard me saying that in public. But it always made good sense to me. Hopefully you'll forgive me here.
 
 Check out the code in listing 5-12:
 
