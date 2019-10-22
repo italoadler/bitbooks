@@ -136,7 +136,9 @@ You might see inverse functions written in a couple of different ways. One is ju
 
 Of course, this is the same with `arc cos`, `arccos`, `cos`<sup>`-1`</sup>, `arc tan`, `arctan` and `tan`<sup>`-1`</sup>
 
+And in code, these are generally written as `asin`, `acos` and `atan`. So in JavaScript we can use the `Math` functions, `Math.asin`, `Math.acos` and `Math.atan` (and `Math.atan2` which I'll cover shortly).
 
 ## Arc tangent
 
 When we enter the realm of arc functions, the importances reverse. Here, you'll find the occasional use for arc sine and arc cosine, but arc tangent is a real powerhouse.
+
