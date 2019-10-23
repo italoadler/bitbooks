@@ -88,7 +88,6 @@ But I will give a very quick conceptual idea. Say you have a right triangle. You
 
 ![Use of tangent.](images/figure_6-7.png)
 *Figure 6-7. Use of tangent.*
-# need this figure
 
 We'll call the opposite side y and the adjacent side x. We know that the angle A is 30 degrees and x is equal to 10. Well, the formula would be:
 
@@ -142,3 +141,9 @@ And in code, these are generally written as `asin`, `acos` and `atan`. So in Jav
 
 When we enter the realm of arc functions, the importances reverse. Here, you'll find the occasional use for arc sine and arc cosine, but arc tangent is a real powerhouse.
 
+A very common use case is, given two x, y positions, figure out the angle between them. Take figure 6-9 for example:
+
+![Angle between two points](images/figure_6-9.png)
+*Figure 6-9. Angle between two points.*
+
+We have points A and B. If we subtract point A's x position from point B's x position, and the same on the y-axis, we can create a right triangle. This is very much the same thing we did in chapter 3 when we wanted to get the distance between two points. But this time, instead of using the Pythagorean theorem, we can pass the ratio of these two sides to the `Math.atan` function. This will give us the angle, in radians, of the angle at point A.

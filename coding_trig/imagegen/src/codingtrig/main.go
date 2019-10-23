@@ -3,5 +3,5 @@ package main
 import "codingtrig/figs"
 
 func main() {
-	figs.Fig0602()
+	figs.Fig0607()
 }
