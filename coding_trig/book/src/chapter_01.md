@@ -46,17 +46,27 @@ If you're coding trigonometry, you're going to need a decent math library. Most 
 
 Listing 1-1 shows a few of the more common functions of the JavaScript math library, compared to the math libraries of some other common languages.
 
-```
-JavaScript         C#                  Processing      Python              Go
------------------  ------------------  --------------  ------------------  -------------------
-Math.sin(angle)    Math.Sin(angle)     sin(angle)      math.sin(angle)     math.Sin(angle)
-Math.cos(angle)    Math.Cos(angle)     cos(angle)      math.cos(angle)     math.Cos(angle)
-Math.tan(angle)    Math.Tan(angle)     tan(angle)      math.tan(angle)     math.Tan(angle)
-Math.atan(ratio)   Math.Atan(ratio)    atan(angle)     math.atan(ratio)    math.Atan(angle)
-Math.atan2(y, x)   Math.Atan2(y, x)    atan2(angle)    math.atan2(y, x)    math.Atan2(angle)
-Math.sqrt(value)   Math.Sqrt(value)    sqrt(value)     math.sqrt(value)    math.Sqrt(angle)
-Math.PI            Math.PI             PI              math.pi             math.Pi
-```
+    Sine:
+      JavaScript: Math.sin(angle)
+      C#:         Math.Sin(angle)
+      Go:         math.Sin(angle)
+      Python:     math.sin(angle)
+      Processing: sin(angle)
+
+    Square Root:
+      JavaScript: Math.sqrt(value)
+      C#:         Math.Sqrt(value)
+      Go:         math.Sqrt(angle)
+      Python:     math.sqrt(value)
+      Processing: sqrt(value)
+
+    Pi:
+      JavaScript: Math.PI
+      C#:         Math.PI
+      Go:         math.Pi
+      Python:     math.pi
+      Processing: PI
+
 *Listing 1-1*
 
 This isn't all of the functions by far, but you can see that for the most part, translating the math functions from JavaScript to some other language is, for the most part, trivial. Don't worry if you don't know what some (or any) of those functions are. They'll all be covered in the book.

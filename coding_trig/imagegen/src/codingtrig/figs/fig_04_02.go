@@ -11,12 +11,13 @@ import (
 // Fig0402 blah
 func Fig0402() {
 	filename := "images/figure_4-2.png"
-	width := 1850.0
+	width := 2000.0
 	height := 700.0
 	surface := blgo.NewSurface(width, height)
 	surface.ClearRGB(1, 1, 1)
 	surface.SetLineWidth(4)
 	surface.SetFontSize(50)
+	surface.Translate(70, 0)
 
 	hyp := 500.0
 	angle := math.Pi / 6

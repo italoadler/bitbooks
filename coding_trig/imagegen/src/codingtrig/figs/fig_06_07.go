@@ -2,6 +2,7 @@ package figs
 
 import (
 	"codingtrig/trig"
+	"math"
 
 	"github.com/bit101/blgo"
 	"github.com/bit101/blgo/util"
@@ -10,18 +11,19 @@ import (
 // Fig0607 blah
 func Fig0607() {
 	filename := "images/figure_6-7.png"
-	width := 800.0
-	height := 600.0
+	width := 2000.0
+	height := 900.0
 	surface := blgo.NewSurface(width, height)
 	surface.ClearRGB(1, 1, 1)
 
-	trig.DrawRightTriangle(550, 400, -350, 250, surface)
+	h := 1000 * math.Tan(math.Pi/6)
+	trig.DrawRightTriangle(1500, 800, -1000, h, surface)
 
-	surface.SetFontSize(30)
-	surface.FillText("A", 160, 400)
-	surface.FillText("30 degrees", 90, 440)
-	surface.FillText("y = ???", 580, 280)
-	surface.FillText("x = 10", 330, 440)
+	surface.SetFontSize(50)
+	surface.FillText("A", 420, 820)
+	surface.FillText("30 degrees", 670, 760)
+	surface.FillText("y = ???", 1540, 800-h/2)
+	surface.FillText("x = 10", 900, 860)
 
 	surface.WriteToPNG(filename)
 	util.ViewImage(filename)

@@ -119,9 +119,8 @@ Say you have the situation shown in figure 6-8:
 
 ![Arc sine.](images/figure_6-8.png)
 *Figure 6-8. Arc sine.*
-# need this figure
 
-We have the length of the hypotenuse (10) and the opposite side (5). The ratio (opposite divided by hypotenuse) is 0.5. And the arc sine of 0.5 is 30 degrees.
+We have the length of the hypotenuse (10) and the opposite side (5). And we want to know what that angle is. Well, the ratio of the opposite and the hypotenuse is 0.5. And the arc sine of 0.5 is 30 degrees.
 
 Or, to be even more concise:
 

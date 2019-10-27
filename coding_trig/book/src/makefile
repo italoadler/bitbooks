@@ -1,5 +1,5 @@
 default:
-	@tmux_send "make all"
+	@tmux_send "make epub"
 
 pandoc := pandoc \
 	chapter_01.md \
@@ -8,17 +8,18 @@ pandoc := pandoc \
 	chapter_04.md \
 	chapter_05.md \
 	chapter_06.md \
-	--css "style.css" \
-	-V margin-left=1in \
-	-V margin-right=1in \
-	-V margin-top=1in \
-	-V margin-bottom=1in \
 	--ascii \
 	--epub-cover-image=images/cover.png \
 	--toc \
 	--pdf-engine=xelatex \
 	--metadata title="Coding Trigonometry" \
-	--variable mainfont="DejaVu Serif" \
+	-V margin-left=1in \
+	-V margin-right=1in \
+	-V margin-top=1in \
+	-V margin-bottom=1in \
+	-V mainfont="DejaVu Serif" \
+	-V monofont="DejaVu Sans Mono" \
+	-V mainfontoptions="ItalicFont=DejaVu Serif Italic" \
 	-o 
 
 all: ../out/coding-trigonometry.pdf ../out/coding-trigonometry.epub ../out/coding-trigonometry.mobi ../out/coding-trigonometry.azw3
