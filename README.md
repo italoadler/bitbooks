@@ -22,4 +22,4 @@ The books will be written in markdown and exported as epub, mobi, pdf and html f
 
 While I am not in any way doing this as a source of income, I will be setting up avenues for people to contribute monetarily. 
 
-Read the first book as a work in progress: [Coding Trigonometry](coding_trig/book/index.md)
+Read the first book as a work in progress: [Coding Trigonometry](https://github.com/bit101/bitbooks/blob/master/coding_trig/book/src/index.md)
