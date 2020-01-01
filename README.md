@@ -1,6 +1,6 @@
-# camp
+# bitbooks
 
-`camp` is Code, Art, Math, Physics. A multi-language repository of knowledge and techniques.
+`bitboks` is a multi-language repository of knowledge and techniques.
 
 One of my earliest code epiphanies was a small Commodore 64 BASIC program that contained a long list of numbers and used those numbers to render a detailed drawing of an eye. I realized you could create art with code. 
 
@@ -16,7 +16,7 @@ As I write this, I'm about to turn 55. It's been an amazing 20-something years o
 
 One of the problems with a lot of the stuff I've done so far is that it gets obsolete way too quickly. Most of the books I wrote were for Flash/ActionScript, which is, for all intents and purposes, a dead platform. The same with a lot of the tutorials and blog posts from back in the day. Others were for Objective-C on iPhone 3G era devices. Later I moved to JavaScript and that promised to hold up for a while, but even that's seen some big changes in the last few years. I wanted to share knowledge in some format that could potentially last a while longer. Maybe even outlast me.
 
-The goal of `camp` is to compile as much knowledge as I can on these subjects, in a format that is free, open, dynamic and updateable, and spans multiple programming languages. I'll start with a couple of open source books. These, by necessity will be based on a single language - JavaScript at this point. But there will be code samples in at least one or two other languages. And I'm hoping that the coding community will contribute samples in even more languages. If somebody wants, they could even fork the repo and change the books' texts to present the examples in another language.
+The goal of `bitbooks` is to compile as much knowledge as I can on these subjects, in a format that is free, open, dynamic and updateable, and spans multiple programming languages. I'll start with a couple of open source books. These, by necessity will be based on a single language - JavaScript at this point. But there will be code samples in at least one or two other languages. And I'm hoping that the coding community will contribute samples in even more languages. If somebody wants, they could even fork the repo and change the books' texts to present the examples in another language.
 
 The books will be written in markdown and exported as epub, mobi, pdf and html for those who want to read them on various devices.
 
