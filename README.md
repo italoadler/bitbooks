@@ -1,6 +1,6 @@
 # bitbooks
 
-`bitboks` is a multi-language repository of knowledge and techniques.
+`bitbooks` is a multi-language repository of knowledge and techniques.
 
 One of my earliest code epiphanies was a small Commodore 64 BASIC program that contained a long list of numbers and used those numbers to render a detailed drawing of an eye. I realized you could create art with code. 
 
