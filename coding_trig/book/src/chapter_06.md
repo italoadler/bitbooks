@@ -1,6 +1,8 @@
 # Chapter 6 - Tangent and Arc Tangent
 
-In the previous two chapters, we've discussed two of the three core trigonometric functions - sine and cosine. We've seen some useful techniques that implement these functions and how closely these two functions relate to each other. But what about the third function, tangent? Is it that different? Does it have no practical uses? Well, yes, it's quite different from both sine and cosine in how it works. But there are some extremely useful techniques that you can employ with tangent. We'll discover some of them in this chapter.
+In the previous two chapters, we've discussed two of the three core trigonometric functions - sine and cosine. We've seen some useful techniques that implement these functions and how closely these two functions relate to each other. But what about the third function, tangent? Is it that different? Does it have no practical uses?
+
+Well, yes, it's quite different from both sine and cosine in the it works and what it is used for. But tangent does make some extremely useful techniques possible. We'll discover some of them in this chapter.
 
 We'll also look into the arc tangent function, which is the inverse of tangent. Don't worry about what that means exactly just yet. We'll get there shortly.
 
@@ -82,7 +84,7 @@ As described, the curve starts at zero for zero degrees. It shoots up to infinit
 
 ## Uses of tangent
 
-I'll be straight with you. For the most part, tangent is uses way, way less than sine or cosine. I could dive into some contrived examples of where you might use tangent, but I'd rather stick to things you'll actually need to use on a regular basis. 
+I'll be straight with you. For the most part, tangent is used far less than sine or cosine. I could dive into some contrived examples of where you might use tangent, but I'd rather stick to things you'll actually need to use on a regular basis. 
 
 But I will give a very quick conceptual idea. Say you have a right triangle. You know one angle and the length of the adjacent side of that angle. And you want to know the length of the opposite side, as seen in figure 6-7. 
 
@@ -145,4 +147,4 @@ A very common use case is, given two x, y positions, figure out the angle betwee
 ![Angle between two points](images/figure_6-9.png)
 *Figure 6-9. Angle between two points.*
 
-We have points A and B. If we subtract point A's x position from point B's x position, and the same on the y-axis, we can create a right triangle. This is very much the same thing we did in chapter 3 when we wanted to get the distance between two points. But this time, instead of using the Pythagorean theorem, we can pass the ratio of these two sides to the `Math.atan` function. This will give us the angle, in radians, of the angle at point A.
+We have points A and B. If we subtract point A's x position from point B's x position, and the same on the y-axis, we can create a right triangle. This is very much the same thing we did in chapter 3 when we wanted to get the distance between two points. But this time, instead of using the Pythagorean theorem, we can pass the ratio of these two sides to the `Math.atan` function. This will give us the angle at point A, in radians.
