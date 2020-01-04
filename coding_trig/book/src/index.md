@@ -4,6 +4,6 @@
 4. [Sine and Cosine](chapter_04.md)
 5. [Uses of Sine and Cosine](chapter_05.md)
 6. [Tangent and Arctangent](chapter_06.md)
-7. Law of Sines and Law of Cosines
+7. [Law of Sines and Law of Cosines](chapter_07.md)
 8. Dot Product
 9. Cross Product
