@@ -29,7 +29,7 @@ At this point, you might think that we're heading into another sine-like curve. 
 
 In fact, as the angle gets very close to 90 degrees, the length of the adjacent side becomes infinitesimal. This means that the tangent approaches infinity. And when the angle reaches exactly 90 degrees, the length of the adjacent side becomes exactly zero. Now, no matter what the length of the opposite side is, we wind up in a divide-by-zero situation, which is undefined. And so it is that you can't calculate the tangent of 90 degrees (or π/2 radians). Try it in a physical calculator and it should give you an error.
 
-If you use a web based calculator app, however, you might get some large number like `1.6331239e+16` (that's scientific notation, equal to `1.6331239 * 10^16`. 
+If you use a web based calculator app, however, you might get some large number like `1.6331239e+16` (that's scientific notation, equal to `1.6331239 * 10^16`).
 
 That's because web based calculators are done in JavaScript. Try this in JavaScript:
 
@@ -80,7 +80,7 @@ This is very similar to listing 4-4 in chapter 4, other than the fact that it us
 ![Tangent plotted out.](images/figure_6-6.png)
 *Figure 6-6. Tangent plotted out.*
 
-As described, the curve starts at zero for zero degrees. It shoots up to infinity as it nears 90 degrees (π/2 radians) and then jump back down towards negative infinity just past 90 degrees. Because we are drawing a single continuous series of line segments to create the curve, we see a nearly vertical line connecting the high positive and high negative values. Most times you see tangent plotted out, that vertical line will either be shown as a dotted line or not shown at all. The fact that it's drawn here is just a byproduct of our drawing routine.
+As described, the curve starts at zero for zero degrees. It shoots up to infinity as it nears 90 degrees (π/2 radians) and then jump back down towards negative infinity just past 90 degrees. Because we are drawing a single continuous series of line segments to create the curve, we see a nearly vertical line connecting the high positive and high negative values. Most times you see tangent plotted out, that vertical line will either be shown as a dotted line or not shown at all. The fact that it's drawn here is just a byproduct of our drawing routine. In reality, the value of of tangent will never fall anywhere on that vertical line. It approaches infinity, becomes undefined and immediately jumps to near negative infinity.
 
 ## Uses of tangent
 
@@ -148,3 +148,191 @@ A very common use case is, given two x, y positions, figure out the angle betwee
 *Figure 6-9. Angle between two points.*
 
 We have points A and B. If we subtract point A's x position from point B's x position, and the same on the y-axis, we can create a right triangle. This is very much the same thing we did in chapter 3 when we wanted to get the distance between two points. But this time, instead of using the Pythagorean theorem, we can pass the ratio of these two sides to the `Math.atan` function. This will give us the angle at point A, in radians.
+
+Let's dive right into some code. See listing 6-2.
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    const p0 = {
+      x: width / 2,
+      y: height / 2,
+    };
+
+    let p1;
+
+    canvas.addEventListener("click", onClick);
+    context.font = "20px Arial";
+
+    function onClick(event) {
+      p1 = new Point(event.clientX, event.clientY);
+      render();
+    }
+
+    function render() {
+      context.clearRect(0, 0, width, height);
+      renderPoint(p0);
+      renderPoint(p1);
+
+      context.beginPath();
+      context.moveTo(p0.x, p0.y);
+      context.lineTo(p1.x, p0.y);
+      context.lineTo(p1.x, p1.y);
+      context.lineTo(p0.x, p0.y);
+      context.stroke();
+
+      let x = p1.x - p0.x;
+      let y = p1.y - p0.y;
+      let rad = Math.atan(y / x);
+      let deg = Math.round(rad * 180 / Math.PI);
+
+      context.fillText(deg + " degrees", p0.x, p0.y - 10);
+
+    }
+
+    function renderPoint(p) {
+      context.beginPath();
+      context.arc(p.x, p.y, 5, 0, Math.PI * 2);
+      context.fill();
+    }
+
+*Listing 6-2*
+
+This is pretty similar to listing 3-2 from chapter 3. In this case, `p0` is a point at the center of the canvas and `p1` is created when you click the mouse. The `render` function clears the screen and renders both points, then draws the right triangle created by those two points. It gets `x` and `y` values by subtracting the positions of the two points on the x- and y-axes. It then calls `Math.atan(y / x)` to get the angle between the points in radians, converts it to degrees, rounds it off, and writes that value on the screen.
+
+When you run this and click above and to the right of the center of the screen, you should get something like you see in figure 6-10.
+
+![Using arc tangent to find an angle](images/figure_6-10.png)<br/>
+*Figure 6-10. Using arc tangent to find an angle.*
+
+This shows that the angle formed between the two points is approximately -30 degrees. (-30 because it's going counter-clockwise and we're dealing with screen coordinates, not Cartesian coordinates.)
+
+But what if we click below and to the left of center, like in figure 6-11?
+
+![Another angle with arc tangent](images/figure_6-11.png)<br/>
+*Figure 6-11. Another angle with arc tangent.*
+
+Uh-oh, this also shows -30 degrees. Seems like a bug! But it's not. The problem is that the `Math.atan` function just takes a ratio. In the first case we have a positive x value and a negative y value, so we get a negative ratio. In the second case, we have a negative x and a positive y, but it ends up being the same ratio! There is no way that the function can know which quadrant you are referring to. So it will always give you values between -π/2 and +π/2 radians (-90 and +90 degrees). But you can see that this ambiguity is less than optimal if you are trying to find an angle that really is in one of those left-hand quadrants.
+
+Thankfully, there's another function, `Math.atan2`. Not the most creative name in the world, but it's become the standard in most math libraries, so get used to it. Instead of taking a direct ratio, `Math.atan2` takes the two numbers that create the ratio. Its signature is: `Math.atan2(y, x)`. Note that the y value always comes first. Now, because it knows the sign of each value, it can correctly determine what quadrant you are trying to find the angle in, and give you a more useful answer.
+
+Listing 6-3 contains the code that implements this.
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    const p0 = {
+      x: width / 2,
+      y: height / 2,
+    };
+
+    let p1;
+
+    canvas.addEventListener("click", onClick);
+    context.font = "20px Arial";
+
+    function onClick(event) {
+      p1 = new Point(event.clientX, event.clientY);
+      render();
+    }
+
+    function render() {
+      context.clearRect(0, 0, width, height);
+      renderPoint(p0);
+      renderPoint(p1);
+
+      context.beginPath();
+      context.moveTo(p0.x, p0.y);
+      context.lineTo(p1.x, p0.y);
+      context.lineTo(p1.x, p1.y);
+      context.lineTo(p0.x, p0.y);
+      context.stroke();
+
+      let x = p1.x - p0.x;
+      let y = p1.y - p0.y;
+      let rad = Math.atan2(y, x);
+      let deg = Math.round(rad * 180 / Math.PI);
+
+      context.fillText(deg + " degrees", p0.x, p0.y - 10);
+
+    }
+
+    function renderPoint(p) {
+      context.beginPath();
+      context.arc(p.x, p.y, 5, 0, Math.PI * 2);
+      context.fill();
+    }
+
+*Listing 6-3*
+
+This is only one line different than listing 6-2: 
+
+    let rad = Math.atan2(y, x);
+
+But when you run this again and click in the same area, you now get 150 degrees instead of -30 degrees, as you can see in figure 6-12.
+
+![Using Math.atan2](images/figure_6-12.png)<br/>
+*Figure 6-12. Using Math.atan2.*
+
+Note that `Math.atan2` will always return values from -π to +π radians (-180 to +180 degrees). 
+
+Well, let's put this to use. A common use-case for this is to make one object point at another object. For example, we can draw an arrow that always points at the mouse. The code is in listing 6-4.
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    const width = canvas.width = window.innerWidth;
+    const height = canvas.height = window.innerHeight;
+
+    canvas.addEventListener("mousemove", onMouseMove);
+
+    function onMouseMove(event) {
+      // determine the angle
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      const dx = mouseX - width / 2;
+      const dy = mouseY - height / 2;
+      const angle = Math.atan2(dy, dx);
+
+      context.clearRect(0, 0, width, height);
+
+      // transform the context by that angle
+      context.save();
+      context.translate(width / 2, height / 2);
+      context.rotate(angle);
+
+      // draw an arrow
+      context.beginPath();
+      context.moveTo(-30, -10);
+      context.lineTo(5, -10);
+      context.lineTo(5, -20);
+      context.lineTo(30, 0);
+      context.lineTo(5, 20);
+      context.lineTo(5, 10);
+      context.lineTo(-30, 10);
+      context.closePath();
+      context.fill();
+
+      // restore the context
+      context.restore();
+    }
+
+*Listing 6-4*
+
+First we set up a listener for the `mousemove` event on the canvas. In that handler, first we get the x, y position of the mouse as `mouseX` and `mouseY`. I'm going to draw my mouse in the center of the canvas, at `width / 2`, `height / 2`, but you could put it at any position you wanted to.
+
+We'll get the difference between where the mouse is and where the arrow will be, and store that in the variables `dx` and `dy`. Then we use `Math.atan2` to get the angle.
+
+I wrote this all out in individual lines to make it clear, but once you know what you are doing, this can easily be compressed into a single line like so:
+
+    const angle = Math.atan2(event.clientY - height / 2, event.clientX - width / 2);
+
+Next we just need to draw that angle in the right position and rotated towards the mouse. First we save the state of the canvas and translate it to the point where we want to draw the arrow. Again, in this case, that's the center point of the canvas.
+
+Then we rotate by the angle we just calculated, draw the arrow, and restore the context so we can do the same thing the next time the mouse moves. Now when you move the mouse around, the arrow should always point to it. See figure 6-13.
+
+![Pointing at the mouse.](images/figure_6-13.png)<br/>
+*Figure 6-13. Pointing at the mouse*

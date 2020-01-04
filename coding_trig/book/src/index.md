@@ -7,4 +7,3 @@
 7. Law of Sines and Law of Cosines
 8. Dot Product
 9. Cross Product
-10. Fourier Series?
