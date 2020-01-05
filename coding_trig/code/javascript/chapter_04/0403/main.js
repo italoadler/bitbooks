@@ -14,14 +14,6 @@ for (let i = 0; i <= Math.PI * 2; i += 0.2) {
 }
 context.stroke();
 
-// context.beginPath();
-// for (let i = 0; i <= Math.PI * 2; i += 0.2) {
-//   let x = i * 100;
-//   let y = Math.sin(i) * 200;
-//   context.lineTo(x, y);
-// }
-// context.stroke();
-
 context.beginPath();
 context.moveTo(0, 0);
 context.lineTo(width, 0);

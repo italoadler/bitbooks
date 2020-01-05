@@ -1,5 +1,5 @@
 default:
-	@tmux_send "make epub"
+	@tmux_send "make pdf"
 
 pandoc := pandoc \
 	chapter_01.md \

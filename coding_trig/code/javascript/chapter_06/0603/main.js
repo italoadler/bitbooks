@@ -3,18 +3,15 @@ const context = canvas.getContext("2d");
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
-const p0 = {
-  x: width / 2,
-  y: height / 2,
-};
-
-let p1;
+const p0 = new Point(width / 2, height / 2);
+const p1 = new Point(0, 0);
 
 canvas.addEventListener("click", onClick);
 context.font = "20px Arial";
 
 function onClick(event) {
-  p1 = new Point(event.clientX, event.clientY);
+  p1.x = event.clientX;
+  p1.y = event.clientY;
   render();
 }
 
